@@ -49,8 +49,9 @@ h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.
 .chip.on small { color: var(--accent); }
 @media (hover: hover) { .btn:not(:disabled):hover, .chip:not(:disabled):hover { border-color: var(--accent); } .btn.primary:hover { filter: brightness(1.08); } }
 
-/* 첫머리: 제목·숫자 + QR. QR 상자는 오른쪽 기둥으로, 위는 제목에 아래는 숫자 칸 끝에 맞춰요 */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; align-items: stretch; padding: 36px 0 28px; }
+/* 첫머리: 제목·숫자 + QR. 숫자 줄은 소개 글의 가장 긴 줄만큼, QR 상자는 오른쪽 끝 기둥으로(위는 제목, 아래는 숫자 칸 끝에 맞춰요) */
+.hero { display: grid; grid-template-columns: minmax(0, max-content) 320px; justify-content: space-between; gap: 32px;
+  align-items: stretch; padding: 36px 0 28px; }
 .hero .lead { margin-top: 8px; max-width: 820px; }
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
 .stats div { display: flex; align-items: baseline; gap: 8px; padding: 18px 20px; background: var(--surface);
@@ -143,7 +144,7 @@ h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.
 @media (max-width: 1500px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1100px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: minmax(0, max-content); }
   .qr-box { padding: 12px 14px; }
   .qr-box img, .qr-box .phone { display: none; }   /* 좁은 화면은 문의만 (QR은 넓은 화면에서 휴대폰으로 옮겨 볼 때 써요) */
 }
