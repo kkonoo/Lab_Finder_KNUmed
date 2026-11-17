@@ -14,7 +14,7 @@ window.startQuiz = D => {
   function intro() {
     return `<p class="label">의과대학 · 2분 테스트</p>
       <h2>나에게 맞는 연구 스타일은?</h2>
-      <p class="lead">정답은 없어요. 마음이 가는 쪽을 골라 주세요. 실험 · 공학 · 데이터 · 사람·임상 중 어떤 방식이 나에게 맞는지 알려 드리고, 잘 맞는 교수님 연구실을 추천해 드려요.</p>
+      <p class="lead">정답은 없으니 마음이 가는 쪽을 골라 주세요.<br>실험 · 공학 · 데이터 · 사람·임상 중 어떤 방식이 나에게 맞는지 알려 드려요.<br>잘 맞는 교수님 연구실도 추천해 드려요.</p>
       <div class="row"><button class="btn primary" data-act="start">테스트 시작</button>
       <a class="btn" href="#book">교수진 바로 보기 ↓</a>
       <a class="btn" href="apply.html">인턴십 신청</a></div>`;
