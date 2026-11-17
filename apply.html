@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연구 인턴십 신청</title>
+<meta name="description" content="경북대학교 의과대학 2026학년도 동계 학부생 연구 인턴십 안내와 신청">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="form.css">
+</head>
+<body>
+<main class="sheet">
+  <p class="label">경북대학교 융합형 의사과학자 양성사업단</p>
+  <h2>2026학년도 동계 학부생 연구 인턴십</h2>
+  <p class="lead">의과대학 학부생이 6주 동안 교내 연구실이나 DGIST 연구실에서 연구에 참여해요. 어떤 연구실이 맞을지 모르겠다면 먼저 <a href="./">연구실 찾기</a>에서 2분 테스트를 해 보세요.</p>
+
+  <dl class="facts">
+    <div><dt>활동 기간</dt><dd>2026. 12. 21.(월) ~ 2027. 1. 29.(금), 6주 동안 Full-time<br><small>연구 일정과 시간은 참여 연구실 지도교수님과 협의해요</small></dd></div>
+    <div><dt>지원 자격</dt><dd>경북대학교 의과대학 재학생</dd></div>
+    <div><dt>운영 트랙</dt><dd><b>Track 1</b> 교내 연구 인턴십 · 경북대학교 교내 연구실<br><b>Track 2</b> DGIST 연계 연구 연수 · DGIST 참여 연구실</dd></div>
+    <div><dt>지원 내용</dt><dd>인턴 수료증 (결과보고서 제출과 연구 성과발표회 참석 시)<br>시상금 (최종 평가 결과에 따라 차등)<br>참여 연구실에 연구활동비 지원</dd></div>
+    <div><dt>일정</dt><dd>신청 · 2026. 11. 25.(수) 13시까지<br>선발과 연구실 매칭 · 2026. 12. 2.(수)까지<br>연구 인턴십 · 2026. 12. 21.(월) ~ 2027. 1. 29.(금)<br>연구 성과발표회 · 2027년 2월 초</dd></div>
+    <div><dt>참여 학생이 할 일</dt><dd>배정된 연구실에서 성실하게 인턴 참여<br>연구 성과발표회에서 연구 결과 구두 발표<br>연구 결과보고서 제출</dd></div>
+    <div><dt>문의</dt><dd>053-420-4855 · <a href="mailto:hgysu03@knu.ac.kr">hgysu03@knu.ac.kr</a></dd></div>
+  </dl>
+
+  <h3 class="sec">신청 방법 <small>둘 중 편한 방법으로 내요</small></h3>
+  <ol class="ways">
+    <li><b>이 페이지에서 바로 신청</b> 아래 신청서를 채워 내요.</li>
+    <li><b>메일로 신청</b> 인턴십 지원서와 개인정보 이용 동의서를 <a href="mailto:hgysu03@knu.ac.kr?subject=%5B%EC%97%B0%EA%B5%AC%20%EC%9D%B8%ED%84%B4%EC%8B%AD%20%EC%8B%A0%EC%B2%AD%5D">hgysu03@knu.ac.kr</a>로 보내요.</li>
+  </ol>
+
+  <div id="gate" class="gate" hidden></div>
+
+  <form id="applyForm" class="form" hidden>
+    <h3 class="sec">신청서</h3>
+    <div class="two">
+      <label class="field">이름<input name="name" maxlength="50" required autocomplete="name"></label>
+      <label class="field">학번<input name="sid" maxlength="20" required inputmode="numeric"></label>
+      <label class="field">학년<select name="year" required>
+        <option value="">고르기</option>
+        <option>의예과 1학년</option><option>의예과 2학년</option>
+        <option>의학과 1학년</option><option>의학과 2학년</option><option>의학과 3학년</option><option>의학과 4학년</option>
+      </select></label>
+      <label class="field">연락처<input name="phone" maxlength="30" required type="tel" autocomplete="tel" placeholder="010-0000-0000"></label>
+      <label class="field wide">이메일 <small>결과를 이 주소로 알려 드려요</small><input name="email" maxlength="200" required type="email" autocomplete="email"></label>
+    </div>
+
+    <fieldset class="field">
+      <legend>희망 트랙</legend>
+      <div class="choices">
+        <label><input type="radio" name="track" value="1" required> Track 1 교내 연구 인턴십</label>
+        <label><input type="radio" name="track" value="2"> Track 2 DGIST 연계 연구 연수</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>희망 연구실 <small>1지망은 꼭, 2·3지망은 있으면 적어요. 교수님 이름을 치면 목록이 나와요. Track 2는 DGIST 연구실을 적어요</small></legend>
+      <div class="labs">
+        <label>1지망<input name="lab1" maxlength="100" list="labList" required></label>
+        <label>2지망<input name="lab2" maxlength="100" list="labList"></label>
+        <label>3지망<input name="lab3" maxlength="100" list="labList"></label>
+      </div>
+      <datalist id="labList"></datalist>
+    </fieldset>
+
+    <p id="styleNote" class="note" hidden></p>
+
+    <label class="field">지원 동기와 관심 분야<textarea name="motive" rows="5" maxlength="2000" required></textarea></label>
+    <label class="field">연구 경험 <small>있으면 적어요 (실험 실습, 연구 동아리, 학회 참석 등)</small><textarea name="experience" rows="3" maxlength="2000"></textarea></label>
+
+    <div class="consent">
+      <p><b>개인정보 수집·이용 안내</b></p>
+      <p>수집 항목: 이름, 학번, 학년, 연락처, 이메일, 신청 내용<br>
+        이용 목적: 연구 인턴십 참여 학생 선발, 연구실 매칭, 결과 안내와 프로그램 운영 연락<br>
+        보유 기간: 프로그램 종료(2027년 2월) 후 1년, 이후 파기<br>
+        동의하지 않으면 온라인 신청을 할 수 없어요. 이때는 메일로 신청해 주세요.</p>
+      <label class="check"><input type="checkbox" name="agree" required> 위 내용에 동의해요</label>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="submitBtn" type="submit">신청하기</button>
+      <p id="msg" class="msg" role="status"></p>
+    </div>
+  </form>
+</main>
+<script type="module" src="js/apply.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+rules_version = '2';
+
+// Firebase 콘솔 → Firestore → 규칙에 그대로 붙여 넣어요.
+// applications: 인턴십 신청 (로그인 없이 누구나 새로 내기만, 보는 건 관리자만)
+// admins/{이메일}: 관리자 (구글 계정)
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function myEmail() {
+      return request.auth.token.email.lower();
+    }
+    function isAdmin() {
+      return request.auth != null && request.auth.token.get('email_verified', false) == true
+        && exists(/databases/$(database)/documents/admins/$(myEmail()));
+    }
+    function text(v, max) {
+      return v is string && v.size() <= max;
+    }
+    function filled(v, max) {
+      return v is string && v.size() > 0 && v.size() <= max;
+    }
+
+    // 신청서 칸 (js/apply.js와 같게)
+    function validApplication() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['round', 'name', 'sid', 'year', 'phone', 'email', 'track', 'labs',
+                               'style', 'topics', 'motive', 'experience', 'agree', 'status', 'createdAt'])
+        && filled(d.round, 30)
+        && filled(d.name, 50)
+        && filled(d.sid, 20)
+        && filled(d.year, 20)
+        && filled(d.phone, 30)
+        && d.email is string && d.email.size() <= 200 && d.email.matches('[^@\\s]+@[^@\\s]+[.][^@\\s]+')
+        && d.track in ['1', '2']
+        && d.labs is list && d.labs.size() >= 1 && d.labs.size() <= 3
+        && text(d.style, 2) && d.style.matches('([WEDP][QS])?')
+        && d.topics is list && d.topics.size() <= 2
+        && filled(d.motive, 2000)
+        && text(d.experience, 2000)
+        && d.agree == true
+        && d.status == 'submitted'
+        && d.createdAt == request.time;
+    }
+
+    match /admins/{email} {
+      // 본인 문서는 읽을 수 있어야 관리자인지 확인할 수 있어요
+      allow read: if isAdmin() || (request.auth != null && email == myEmail());
+      allow create: if isAdmin() && email == email.lower();
+      allow delete: if isAdmin() && email != myEmail();
+    }
+
+    match /applications/{id} {
+      allow read, delete: if isAdmin();
+      allow create: if validApplication();
+      // 관리자는 결과(상태·메모)만 고쳐요
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'note', 'decidedAt', 'decidedBy'])
+        && request.resource.data.status in ['submitted', 'approved', 'rejected']
+        && text(request.resource.data.get('note', ''), 2000);
+    }
+  }
+}
