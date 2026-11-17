@@ -1,15 +1,15 @@
 // 연구 스타일 테스트: 9문항(둘 중 하나) + 관심 주제(두 개까지) -> 유형 + 잘 맞는 교수님
 // 방법 4가지(실험·공학·데이터·사람·임상)는 둘씩 한 번씩 맞붙여(6문항) 많이 고른 쪽, 목표(원리·해결)는 3문항 중 많이 고른 쪽
-(() => {
-  const D = JSON.parse(document.getElementById("quiz-data").textContent);
+// js/book.js가 데이터를 읽은 뒤 startQuiz(D)로 시작해요. D = data/quiz.json + 보이는 교수님(profs)
+window.startQuiz = D => {
   const box = document.getElementById("quiz");
   const N = D.questions.length;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(v => v[1]);
   const PER = 5;  // 추천 목록 한 쪽에 5분
   let step = -1, ans = [], picks = [], opts = [], code = "", recs = [], rpage = 0;
-  // 관리자가 끈 교수님(js/labs.js가 카드를 숨김)과 소개가 아직 없는 분(style 없음)은 추천에서 빼요
-  const pool = () => D.profs.filter(p => p.style.length && !document.getElementById(p.name)?.hidden);
+  // 소개가 아직 없는 분(style 없음)은 추천에서 빼요 (관리자가 끈 분은 D.profs에 처음부터 없어요)
+  const pool = () => D.profs.filter(p => p.style.length);
 
   function intro() {
     return `<p class="label">의과대학 · 2분 테스트</p>
@@ -84,9 +84,9 @@
         <p class="code">${m[1]} ${esc(m[2])} · ${g[1]} ${esc(g[2])}</p></div></div>
       <p class="lead">${esc(text)}</p>
       <h3 class="rec-title">이런 교수님 연구실이 잘 맞을 수 있어요 <small>${recs.length}분 · 잘 맞는 순</small></h3>
-      <ul class="recs">${shown.map(p => `<li><a href="#${encodeURIComponent(p.name)}">
+      <ul class="recs">${shown.map(p => `<li><a href="#p-${esc(p.id)}" data-prof="${esc(p.id)}">
         <img src="${esc(p.photo)}" alt=""><span><b>${esc(p.name)}</b> ${esc(p.rank)}<br>
-        <small>${esc(p.dept)} · ${p.page}쪽</small><br><small class="tags">${p.keywords.map(k => "#" + esc(k)).join(" ")}</small></span></a></li>`).join("")}</ul>
+        <small>${esc(p.dept)}</small><br><small class="tags">${p.keywords.map(k => "#" + esc(k)).join(" ")}</small></span></a></li>`).join("")}</ul>
       ${pages > 1 ? `<div class="pager"><button class="btn" data-act="prev" ${rpage ? "" : "disabled"}>‹ 이전</button>
         <span>${rpage + 1} / ${pages}</span>
         <button class="btn" data-act="next" ${rpage < pages - 1 ? "" : "disabled"}>다음 ›</button></div>` : ""}
@@ -119,4 +119,4 @@
   });
 
   render(null);
-})();
+};

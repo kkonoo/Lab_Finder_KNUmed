@@ -1,18 +1,7 @@
 {
- "meta": {
-  "school": "경북대학교 융합형 의사과학자 양성사업단",
-  "title": "의과대학 연구실 찾기",
-  "lead": "경북대학교 의과대학 기초·임상 교수님들의 연구실을 소개해요. 2분 테스트로 나에게 맞는 연구 스타일을 알아보고, 관심 가는 연구실을 찾아 연구 인턴십을 신청해 보세요.",
-  "footer": "경북대학교 융합형 의사과학자 양성사업단",
-  "bookUrl": "https://kkonoo.github.io/Lab_Finder_KNUmed/",
-  "applyUrl": "https://kkonoo.github.io/Lab_Finder_KNUmed/apply.html",
-  "contact": [
-   "053-420-4855",
-   "hgysu03@knu.ac.kr"
-  ]
- },
  "profs": [
   {
+   "id": "kuku1819",
    "name": "구윤경",
    "rank": "교수",
    "dept": "기생충학·열대의학교실",
@@ -24,10 +13,10 @@
     "열대의학"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI4Mw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI4Mw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -38,9 +27,11 @@
    ],
    "photo": "photos/kuku1819.jpg",
    "email": "kuku1819@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "ychong",
    "name": "홍연철",
    "rank": "교수",
    "dept": "기생충학·열대의학교실",
@@ -52,10 +43,10 @@
     "진단법"
    ],
    "links": [
-    [
-     "https://research.knu.ac.kr/en/persons/yeonchul-hong/",
-     "연구자 프로필"
-    ]
+    {
+     "url": "https://research.knu.ac.kr/en/persons/yeonchul-hong/",
+     "label": "연구자 프로필"
+    }
    ],
    "contact": null,
    "style": [
@@ -66,9 +57,11 @@
    ],
    "photo": "photos/ychong.jpg",
    "email": "ychong@knu.ac.kr",
-   "source": "pure"
+   "source": "pure",
+   "hidden": false
   },
   {
+   "id": "yell_90",
    "name": "김예리",
    "rank": "조교수",
    "dept": "면역학교실",
@@ -80,15 +73,15 @@
     "미토콘드리아"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=TFwfm9IAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=TFwfm9IAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
-   "contact": [
-    "김예리",
-    "yell_90@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "김예리",
+    "info": "yell_90@knu.ac.kr"
+   },
    "style": [
     "WQ"
    ],
@@ -97,9 +90,11 @@
    ],
    "photo": "photos/yell_90.jpg",
    "email": "yell_90@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "iseo",
    "name": "서인철",
    "rank": "부교수",
    "dept": "면역학교실",
@@ -111,10 +106,10 @@
     "코호트 연구"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=zDr9aw0AAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=zDr9aw0AAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -126,9 +121,11 @@
    ],
    "photo": "photos/iseo.jpg",
    "email": "iseo@knu.ac.kr",
-   "source": "pure,pubmed"
+   "source": "pure,pubmed",
+   "hidden": false
   },
   {
+   "id": "ysung",
    "name": "성영관",
    "rank": "교수",
    "dept": "면역학교실",
@@ -140,10 +137,10 @@
     "피부생물학"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=fU6gc4EAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=fU6gc4EAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -155,9 +152,11 @@
    ],
    "photo": "photos/ysung.jpg",
    "email": "ysung@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "jglee",
    "name": "이종걸",
    "rank": "조교수",
    "dept": "면역학교실",
@@ -169,15 +168,15 @@
     "생식독성"
    ],
    "links": [
-    [
-     "https://im.knu.ac.kr/lee",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "https://im.knu.ac.kr/lee",
+     "label": "연구실 홈페이지"
+    }
    ],
-   "contact": [
-    "이종걸",
-    "jglee@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "이종걸",
+    "info": "jglee@knu.ac.kr"
+   },
    "style": [
     "WQ"
    ],
@@ -186,9 +185,11 @@
    ],
    "photo": "photos/jglee.jpg",
    "email": "jglee@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "wooong0110",
    "name": "최지웅",
    "rank": "조교수",
    "dept": "면역학교실",
@@ -200,10 +201,10 @@
     "면역치료"
    ],
    "links": [
-    [
-     "https://choi-dds.knu.ac.kr/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "https://choi-dds.knu.ac.kr/",
+     "label": "연구실 홈페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -216,9 +217,11 @@
    ],
    "photo": "photos/wooong0110.jpg",
    "email": "wooong0110@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "shukhokim",
    "name": "김석호",
    "rank": "부교수",
    "dept": "미생물학교실",
@@ -230,15 +233,15 @@
     "엔도리신"
    ],
    "links": [
-    [
-     "https://www.researchgate.net/lab/Shukho-Kim-Lab-MDR-Phages-Shukho-Kim",
-     "ResearchGate"
-    ]
+    {
+     "url": "https://www.researchgate.net/lab/Shukho-Kim-Lab-MDR-Phages-Shukho-Kim",
+     "label": "ResearchGate"
+    }
    ],
-   "contact": [
-    "조경민",
-    "gmj350124@naver.com"
-   ],
+   "contact": {
+    "name": "조경민",
+    "info": "gmj350124@naver.com"
+   },
    "style": [
     "WS"
    ],
@@ -247,9 +250,11 @@
    ],
    "photo": "photos/shukhokim.jpg",
    "email": "shukhokim@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "sjkim0080",
    "name": "김성준",
    "rank": "조교수",
    "dept": "미생물학교실",
@@ -261,10 +266,10 @@
     "백신"
    ],
    "links": [
-    [
-     "http://kimlab.knu.ac.kr/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "http://kimlab.knu.ac.kr/",
+     "label": "연구실 홈페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -275,9 +280,11 @@
    ],
    "photo": "photos/sjkim0080.jpg",
    "email": "sjkim0080@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "minkim",
    "name": "김정민",
    "rank": "교수",
    "dept": "미생물학교실",
@@ -289,10 +296,10 @@
     "장내 미생물"
    ],
    "links": [
-    [
-     "https://research.knu.ac.kr/en/persons/jungmin-kim/",
-     "연구자 프로필"
-    ]
+    {
+     "url": "https://research.knu.ac.kr/en/persons/jungmin-kim/",
+     "label": "연구자 프로필"
+    }
    ],
    "contact": null,
    "style": [
@@ -303,9 +310,11 @@
    ],
    "photo": "photos/minkim.jpg",
    "email": "minkim@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "shinms",
    "name": "신민상",
    "rank": "교수",
    "dept": "미생물학교실",
@@ -317,10 +326,10 @@
     "항균 단백질"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=o4Ucq2sAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=o4Ucq2sAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -331,9 +340,11 @@
    ],
    "photo": "photos/shinms.jpg",
    "email": "shinms@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "leejc",
    "name": "이제철",
    "rank": "교수",
    "dept": "미생물학교실",
@@ -345,10 +356,10 @@
     "항균 전략"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=5TlwgOYAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=5TlwgOYAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -359,9 +370,11 @@
    ],
    "photo": "photos/leejc.jpg",
    "email": "leejc@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "cylee87",
    "name": "이충용",
    "rank": "부교수",
    "dept": "미생물학교실",
@@ -373,10 +386,10 @@
     "백신"
    ],
    "links": [
-    [
-     "http://virus.knu.ac.kr/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "http://virus.knu.ac.kr/",
+     "label": "연구실 홈페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -387,9 +400,11 @@
    ],
    "photo": "photos/cylee87.jpg",
    "email": "cylee87@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "dkr3jh",
    "name": "강유나",
    "rank": "교수",
    "dept": "법의학교실",
@@ -402,9 +417,11 @@
    "topics": [],
    "photo": "photos/dkr3jh.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "nvury4",
    "name": "김동자",
    "rank": "부교수",
    "dept": "법의학교실",
@@ -417,9 +434,11 @@
    "topics": [],
    "photo": "photos/nvury4.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "u7axjb",
    "name": "김문식",
    "rank": "부교수",
    "dept": "병리학교실",
@@ -432,9 +451,11 @@
    "topics": [],
    "photo": "photos/u7axjb.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "jyparkmd",
    "name": "박지영",
    "rank": "교수",
    "dept": "병리학교실",
@@ -446,10 +467,10 @@
     "NGS"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMwNw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMwNw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -461,9 +482,11 @@
    ],
    "photo": "photos/jyparkmd.jpg",
    "email": "jyparkmd@knu.ac.kr",
-   "source": "pubmed"
+   "source": "pubmed",
+   "hidden": false
   },
   {
+   "id": "sysnv7",
    "name": "박태인",
    "rank": "교수",
    "dept": "병리학교실",
@@ -476,9 +499,11 @@
    "topics": [],
    "photo": "photos/sysnv7.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "3hv6yg",
    "name": "서안나",
    "rank": "부교수",
    "dept": "병리학교실",
@@ -491,9 +516,11 @@
    "topics": [],
    "photo": "photos/3hv6yg.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "qn8znb",
    "name": "윤길숙",
    "rank": "교수",
    "dept": "병리학교실",
@@ -506,9 +533,11 @@
    "topics": [],
    "photo": "photos/qn8znb.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "tbqfvz",
    "name": "한만훈",
    "rank": "조교수",
    "dept": "병리학교실",
@@ -521,9 +550,11 @@
    "topics": [],
    "photo": "photos/tbqfvz.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "kjeun",
    "name": "김정은",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -535,15 +566,15 @@
     "뼈 전이"
    ],
    "links": [
-    [
-     "https://kimslab-2fwddodh.manus.space/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "https://kimslab-2fwddodh.manus.space/",
+     "label": "연구실 홈페이지"
+    }
    ],
-   "contact": [
-    "김정은",
-    "kjeun@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "김정은",
+    "info": "kjeun@knu.ac.kr"
+   },
    "style": [
     "WQ"
    ],
@@ -553,9 +584,11 @@
    ],
    "photo": "photos/kjeun.jpg",
    "email": "kjeun@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "nams",
    "name": "남성욱",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -567,10 +600,10 @@
     "이미지 분석"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2NA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2NA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -582,9 +615,11 @@
    ],
    "photo": "photos/nams.jpg",
    "email": "nams@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "mcbaek",
    "name": "백문창",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -596,10 +631,10 @@
     "나노소포"
    ],
    "links": [
-    [
-     "http://exosome.knu.ac.kr",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "http://exosome.knu.ac.kr",
+     "label": "연구실 홈페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -611,9 +646,11 @@
    ],
    "photo": "photos/mcbaek.jpg",
    "email": "mcbaek@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "pqss78",
    "name": "부용출",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -635,9 +672,11 @@
    ],
    "photo": "photos/pqss78.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "yooj",
    "name": "유정수",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -649,10 +688,10 @@
     "나노의학"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2Nw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2Nw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -663,9 +702,11 @@
    ],
    "photo": "photos/yooj.jpg",
    "email": "yooj@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "yry",
    "name": "윤영란",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -677,10 +718,10 @@
     "약동학"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2Ng==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2Ng==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -691,9 +732,11 @@
    ],
    "photo": "photos/yry.jpg",
    "email": "yry@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "ychang",
    "name": "장용민",
    "rank": "교수",
    "dept": "분자의학교실",
@@ -705,10 +748,10 @@
     "뇌영상"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2NQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI2NQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -720,9 +763,11 @@
    ],
    "photo": "photos/ychang.jpg",
    "email": "ychang@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "eha",
    "name": "하은지",
    "rank": "조교수",
    "dept": "분자의학교실",
@@ -734,19 +779,19 @@
     "BI"
    ],
    "links": [
-    [
-     "https://halab.knu.ac.kr",
-     "연구실 홈페이지"
-    ],
-    [
-     "https://halab-quest.knu.ac.kr",
-     "HaLab Quest"
-    ]
+    {
+     "url": "https://halab.knu.ac.kr",
+     "label": "연구실 홈페이지"
+    },
+    {
+     "url": "https://halab-quest.knu.ac.kr",
+     "label": "HaLab Quest"
+    }
    ],
-   "contact": [
-    "김은경",
-    "kek8735@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "김은경",
+    "info": "kek8735@knu.ac.kr"
+   },
    "style": [
     "DQ"
    ],
@@ -760,9 +805,11 @@
    ],
    "photo": "photos/eha.jpg",
    "email": "eha@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "kimhajeong",
    "name": "김하정",
    "rank": "부교수",
    "dept": "생리학교실",
@@ -774,10 +821,10 @@
     "종양미세환경"
    ],
    "links": [
-    [
-     "https://research.knu.ac.kr/en/persons/hajeong-kim/",
-     "연구자 프로필"
-    ]
+    {
+     "url": "https://research.knu.ac.kr/en/persons/hajeong-kim/",
+     "label": "연구자 프로필"
+    }
    ],
    "contact": null,
    "style": [
@@ -789,9 +836,11 @@
    ],
    "photo": "photos/kimhajeong.jpg",
    "email": "kimhajeong@knu.ac.kr",
-   "source": "pure,pubmed"
+   "source": "pure,pubmed",
+   "hidden": false
   },
   {
+   "id": "jsbae",
    "name": "배재성",
    "rank": "교수",
    "dept": "생리학교실",
@@ -803,15 +852,15 @@
     "신경줄기세포"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxNw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxNw==",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "한완희",
-    "wanuni2004@naver.com"
-   ],
+   "contact": {
+    "name": "한완희",
+    "info": "wanuni2004@naver.com"
+   },
    "style": [
     "WQ"
    ],
@@ -821,9 +870,11 @@
    ],
    "photo": "photos/jsbae.jpg",
    "email": "jsbae@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "3k9x7m",
    "name": "양은경",
    "rank": "교수",
    "dept": "생리학교실",
@@ -836,9 +887,11 @@
    "topics": [],
    "photo": "photos/3k9x7m.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "hshan",
    "name": "한형수",
    "rank": "교수",
    "dept": "생리학교실",
@@ -850,10 +903,10 @@
     "디지털 헬스케어"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=8Sr9DVcAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=8Sr9DVcAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -865,9 +918,11 @@
    ],
    "photo": "photos/hshan.jpg",
    "email": "hshan@knu.ac.kr",
-   "source": "dir"
+   "source": "dir",
+   "hidden": false
   },
   {
+   "id": "cwhong",
    "name": "홍장원",
    "rank": "교수",
    "dept": "생리학교실",
@@ -879,10 +934,10 @@
     "지방간"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=5HZWdXcAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=5HZWdXcAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -894,9 +949,11 @@
    ],
    "photo": "photos/cwhong.jpg",
    "email": "cwhong@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "thkwon",
    "name": "권태환",
    "rank": "교수",
    "dept": "생화학·세포생물학교실",
@@ -908,10 +965,10 @@
     "전사 조절"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=e2JgDbkAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=e2JgDbkAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -922,9 +979,11 @@
    ],
    "photo": "photos/thkwon.jpg",
    "email": "thkwon@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "khookim",
    "name": "김균후",
    "rank": "조교수",
    "dept": "생화학·세포생물학교실",
@@ -936,10 +995,10 @@
     "유전 변이"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0NzM=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0NzM=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -950,9 +1009,11 @@
    ],
    "photo": "photos/khookim.jpg",
    "email": "khookim@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "5hra8s",
    "name": "박낭운",
    "rank": "교수",
    "dept": "생화학·세포생물학교실",
@@ -965,9 +1026,11 @@
    "topics": [],
    "photo": "photos/5hra8s.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "leebh",
    "name": "이병헌",
    "rank": "교수",
    "dept": "생화학·세포생물학교실",
@@ -979,10 +1042,10 @@
     "종양미세환경"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=NCNICI0AAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=NCNICI0AAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -993,9 +1056,11 @@
    ],
    "photo": "photos/leebh.jpg",
    "email": "leebh@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "jaemanlee",
    "name": "이재만",
    "rank": "부교수",
    "dept": "생화학·세포생물학교실",
@@ -1007,10 +1072,10 @@
     "자가포식"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxMA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxMA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1021,9 +1086,11 @@
    ],
    "photo": "photos/jaemanlee.jpg",
    "email": "jaemanlee@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "jechoi",
    "name": "최제용",
    "rank": "교수",
    "dept": "생화학·세포생물학교실",
@@ -1035,15 +1102,15 @@
     "골관절염"
    ],
    "links": [
-    [
-     "https://bonechoi.knu.ac.kr/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "https://bonechoi.knu.ac.kr/",
+     "label": "연구실 홈페이지"
+    }
    ],
-   "contact": [
-    "박민",
-    "010-3689-0321"
-   ],
+   "contact": {
+    "name": "박민",
+    "info": "010-3689-0321"
+   },
    "style": [
     "WQ"
    ],
@@ -1052,9 +1119,11 @@
    ],
    "photo": "photos/jechoi.jpg",
    "email": "jechoi@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "keunhur",
    "name": "허근",
    "rank": "교수",
    "dept": "생화학·세포생물학교실",
@@ -1066,15 +1135,15 @@
     "암 바이오마커"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxMQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMxMQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "허근",
-    "keunhur@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "허근",
+    "info": "keunhur@knu.ac.kr"
+   },
    "style": [
     "WQ"
    ],
@@ -1083,9 +1152,11 @@
    ],
    "photo": "photos/keunhur.jpg",
    "email": "keunhur@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "shkim72",
    "name": "김상현",
    "rank": "교수",
    "dept": "약리학교실",
@@ -1097,10 +1168,10 @@
     "면역약리"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5OA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5OA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1112,9 +1183,11 @@
    ],
    "photo": "photos/shkim72.jpg",
    "email": "shkim72@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "fghmeg",
    "name": "김인겸",
    "rank": "교수",
    "dept": "약리학교실",
@@ -1127,9 +1200,11 @@
    "topics": [],
    "photo": "photos/fghmeg.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "ksuk",
    "name": "석경호",
    "rank": "교수",
    "dept": "약리학교실",
@@ -1141,10 +1216,10 @@
     "뇌 노화"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5OQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5OQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1156,9 +1231,11 @@
    ],
    "photo": "photos/ksuk.jpg",
    "email": "ksuk@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "hrl",
    "name": "이화림",
    "rank": "조교수",
    "dept": "약리학교실",
@@ -1170,15 +1247,15 @@
     "폐 모델"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0MzM=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0MzM=",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "이화림",
-    "hrl@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "이화림",
+    "info": "hrl@knu.ac.kr"
+   },
    "style": [
     "ES",
     "WS"
@@ -1190,9 +1267,11 @@
    ],
    "photo": "photos/hrl.jpg",
    "email": "hrl@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "t3zc54",
    "name": "감신",
    "rank": "교수",
    "dept": "예방의학교실",
@@ -1205,9 +1284,11 @@
    "topics": [],
    "photo": "photos/t3zc54.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "2qypku",
    "name": "김건엽",
    "rank": "교수",
    "dept": "예방의학교실",
@@ -1220,9 +1301,11 @@
    "topics": [],
    "photo": "photos/2qypku.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "wghtr3",
    "name": "김종연",
    "rank": "부교수",
    "dept": "예방의학교실",
@@ -1235,9 +1318,11 @@
    "topics": [],
    "photo": "photos/wghtr3.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "t8z272",
    "name": "신지연",
    "rank": "부교수",
    "dept": "예방의학교실",
@@ -1250,9 +1335,11 @@
    "topics": [],
    "photo": "photos/t8z272.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "77qq9t",
    "name": "이덕희",
    "rank": "교수",
    "dept": "예방의학교실",
@@ -1265,9 +1352,11 @@
    "topics": [],
    "photo": "photos/77qq9t.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "gd4kmt",
    "name": "이유미",
    "rank": "교수",
    "dept": "예방의학교실",
@@ -1280,9 +1369,11 @@
    "topics": [],
    "photo": "photos/gd4kmt.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "gdmyy5",
    "name": "홍남수",
    "rank": "교수",
    "dept": "예방의학교실",
@@ -1295,9 +1386,11 @@
    "topics": [],
    "photo": "photos/gdmyy5.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "gmc6sa",
    "name": "김명남",
    "rank": "교수",
    "dept": "의공학교실",
@@ -1319,9 +1412,11 @@
    ],
    "photo": "photos/gmc6sa.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "ngyqt2",
    "name": "성기웅",
    "rank": "조교수",
    "dept": "의공학교실",
@@ -1342,9 +1437,11 @@
    ],
    "photo": "photos/ngyqt2.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "g6agzf",
    "name": "이정현",
    "rank": "조교수",
    "dept": "의공학교실",
@@ -1366,9 +1463,11 @@
    ],
    "photo": "photos/g6agzf.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "y5ytfd",
    "name": "강지연",
    "rank": "조교수",
    "dept": "의료인문·의학교육학교실",
@@ -1381,9 +1480,11 @@
    "topics": [],
    "photo": "photos/y5ytfd.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "hywp5n",
    "name": "여상희",
    "rank": "부교수",
    "dept": "의료인문·의학교육학교실",
@@ -1396,9 +1497,11 @@
    "topics": [],
    "photo": "photos/hywp5n.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "ttx78q",
    "name": "최은경",
    "rank": "부교수",
    "dept": "의료인문·의학교육학교실",
@@ -1411,9 +1514,11 @@
    "topics": [],
    "photo": "photos/ttx78q.jpg",
    "email": "",
-   "source": ""
+   "source": "",
+   "hidden": false
   },
   {
+   "id": "p5hwcb",
    "name": "김상욱",
    "rank": "조교수",
    "dept": "의료정보학교실",
@@ -1425,14 +1530,14 @@
     "의료 인공지능"
    ],
    "links": [
-    [
-     "https://scholar.google.co.kr/citations?user=npgSlq4AAAAJ",
-     "Google Scholar"
-    ],
-    [
-     "https://sites.google.com/view/aimlab-knu/home",
-     "AIM Lab"
-    ]
+    {
+     "url": "https://scholar.google.co.kr/citations?user=npgSlq4AAAAJ",
+     "label": "Google Scholar"
+    },
+    {
+     "url": "https://sites.google.com/view/aimlab-knu/home",
+     "label": "AIM Lab"
+    }
    ],
    "contact": null,
    "style": [
@@ -1443,9 +1548,11 @@
    ],
    "photo": "photos/p5hwcb.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "ap8jdx",
    "name": "양수",
    "rank": "조교수",
    "dept": "의료정보학교실",
@@ -1466,9 +1573,11 @@
    ],
    "photo": "photos/ap8jdx.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "3tcy63",
    "name": "이원기",
    "rank": "교수",
    "dept": "의료정보학교실",
@@ -1491,9 +1600,11 @@
    ],
    "photo": "photos/3tcy63.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "mgwdp6",
    "name": "정성문",
    "rank": "부교수",
    "dept": "의료정보학교실",
@@ -1515,9 +1626,11 @@
    ],
    "photo": "photos/mgwdp6.jpg",
    "email": "",
-   "source": "draft(확인 필요)"
+   "source": "draft(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "doskim",
    "name": "김동선",
    "rank": "교수",
    "dept": "해부학교실",
@@ -1529,10 +1642,10 @@
     "바이오마커"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMyMw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMyMw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1544,9 +1657,11 @@
    ],
    "photo": "photos/doskim.jpg",
    "email": "doskim@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "namys",
    "name": "남용석",
    "rank": "조교수",
    "dept": "해부학교실",
@@ -1558,10 +1673,10 @@
     "수술 해부"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxMjg=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxMjg=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1572,9 +1687,11 @@
    ],
    "photo": "photos/namys.jpg",
    "email": "namys@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "kmpark",
    "name": "박권무",
    "rank": "교수",
    "dept": "해부학교실",
@@ -1586,10 +1703,10 @@
     "일차섬모"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMyMg==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTMyMg==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1600,9 +1717,11 @@
    ],
    "photo": "photos/kmpark.jpg",
    "email": "kmpark@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "irislkm",
    "name": "이경민",
    "rank": "교수",
    "dept": "해부학교실",
@@ -1614,10 +1733,10 @@
     "분자신경생물학"
    ],
    "links": [
-    [
-     "https://research.knu.ac.kr/en/persons/kyungmin-lee/",
-     "연구자 프로필"
-    ]
+    {
+     "url": "https://research.knu.ac.kr/en/persons/kyungmin-lee/",
+     "label": "연구자 프로필"
+    }
    ],
    "contact": null,
    "style": [
@@ -1628,9 +1747,11 @@
    ],
    "photo": "photos/irislkm.jpg",
    "email": "irislkm@knu.ac.kr",
-   "source": "pure"
+   "source": "pure",
+   "hidden": false
   },
   {
+   "id": "tear9754006",
    "name": "권용환",
    "rank": "부교수",
    "dept": "내과학교실",
@@ -1642,10 +1763,10 @@
     "단일세포"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNg==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNg==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1658,9 +1779,11 @@
    ],
    "photo": "photos/tear9754006.jpg",
    "email": "tear9754006@yahoo.co.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "mjikim",
    "name": "김민지",
    "rank": "조교수",
    "dept": "내과학교실",
@@ -1672,10 +1795,10 @@
     "미토콘드리아"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0MzQ=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI0MzQ=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1686,9 +1809,11 @@
    ],
    "photo": "photos/mjikim.jpg",
    "email": "mjikim@knu.ac.kr",
-   "source": "pubmed(확인 필요)"
+   "source": "pubmed(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "dandy813",
    "name": "김은수",
    "rank": "교수",
    "dept": "내과학교실",
@@ -1700,10 +1825,10 @@
     "AI 진단"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1716,9 +1841,11 @@
    ],
    "photo": "photos/dandy813.jpg",
    "email": "dandy813@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "kpark",
    "name": "박근규",
    "rank": "교수",
    "dept": "내과학교실",
@@ -1730,10 +1857,10 @@
     "페롭토시스"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyMQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyMQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1745,9 +1872,11 @@
    ],
    "photo": "photos/kpark.jpg",
    "email": "kpark@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "hankipark",
    "name": "박한기",
    "rank": "부교수",
    "dept": "내과학교실",
@@ -1759,15 +1888,15 @@
     "장내 미생물"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyMw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyMw==",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "박한기",
-    "haan33@naver.com"
-   ],
+   "contact": {
+    "name": "박한기",
+    "info": "haan33@naver.com"
+   },
    "style": [
     "WQ"
    ],
@@ -1777,9 +1906,11 @@
    ],
    "photo": "photos/hankipark.jpg",
    "email": "hankipark@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "vocjsy",
    "name": "장세영",
    "rank": "교수",
    "dept": "내과학교실",
@@ -1791,10 +1922,10 @@
     "빅데이터"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyOA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyOA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1807,9 +1938,11 @@
    ],
    "photo": "photos/vocjsy.jpg",
    "email": "vocjsy@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "swjeon",
    "name": "전성우",
    "rank": "교수",
    "dept": "내과학교실",
@@ -1821,10 +1954,10 @@
     "위암"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIzMA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIzMA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1836,9 +1969,11 @@
    ],
    "photo": "photos/swjeon.jpg",
    "email": "swjeon@knu.ac.kr",
-   "source": "dir"
+   "source": "dir",
+   "hidden": false
   },
   {
+   "id": "jeonjh",
    "name": "전재한",
    "rank": "부교수",
    "dept": "내과학교실",
@@ -1850,10 +1985,10 @@
     "심장·신장"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIyNQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1864,9 +1999,11 @@
    ],
    "photo": "photos/jeonjh.jpg",
    "email": "jeonjh@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "ykchoi",
    "name": "최연경",
    "rank": "부교수",
    "dept": "내과학교실",
@@ -1878,10 +2015,10 @@
     "지방간염"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNA==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNA==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1893,9 +2030,11 @@
    ],
    "photo": "photos/ykchoi.jpg",
    "email": "ykchoi@knu.ac.kr",
-   "source": "pubmed"
+   "source": "pubmed",
+   "hidden": false
   },
   {
+   "id": "kiefedr",
    "name": "한승우",
    "rank": "부교수",
    "dept": "내과학교실",
@@ -1907,10 +2046,10 @@
     "나노입자"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIwNQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIwNQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1921,9 +2060,11 @@
    ],
    "photo": "photos/kiefedr.jpg",
    "email": "kiefedr@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "sgcms3",
    "name": "오진영",
    "rank": "조교수",
    "dept": "마취통증의학교실",
@@ -1935,10 +2076,10 @@
     "골·연골"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTQx",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTQx",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1949,9 +2090,11 @@
    ],
    "photo": "photos/sgcms3.jpg",
    "email": "sgcms3@knu.ac.kr",
-   "source": "pubmed(확인 필요)"
+   "source": "pubmed(확인 필요)",
+   "hidden": false
   },
   {
+   "id": "tgkwon",
    "name": "권태균",
    "rank": "교수",
    "dept": "비뇨기과학교실",
@@ -1963,10 +2106,10 @@
     "세포치료"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTkx",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTkx",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -1979,9 +2122,11 @@
    ],
    "photo": "photos/tgkwon.jpg",
    "email": "tgkwon@knu.ac.kr",
-   "source": "dir"
+   "source": "dir",
+   "hidden": false
   },
   {
+   "id": "urokbs",
    "name": "김범수",
    "rank": "교수",
    "dept": "비뇨기과학교실",
@@ -1993,10 +2138,10 @@
     "바이오소재"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTg5",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTg5",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2009,9 +2154,11 @@
    ],
    "photo": "photos/urokbs.jpg",
    "email": "urokbs@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "gyjhlee",
    "name": "이주헌",
    "rank": "조교수",
    "dept": "산부인과학교실",
@@ -2023,10 +2170,10 @@
     "딥러닝"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxMzk=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxMzk=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2039,9 +2186,11 @@
    ],
    "photo": "photos/gyjhlee.jpg",
    "email": "gyjhlee@knu.ac.kr",
-   "source": "pubmed"
+   "source": "pubmed",
+   "hidden": false
   },
   {
+   "id": "hy-chung",
    "name": "정호윤",
    "rank": "교수",
    "dept": "성형외과학교실",
@@ -2053,10 +2202,10 @@
     "조직 재건"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE1Mg==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE1Mg==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2069,9 +2218,11 @@
    ],
    "photo": "photos/hy-chung.jpg",
    "email": "hy-chung@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "neurojspark",
    "name": "박진성",
    "rank": "부교수",
    "dept": "신경과학교실",
@@ -2083,10 +2234,10 @@
     "SBMA"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTI5",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2098,9 +2249,11 @@
    ],
    "photo": "photos/neurojspark.jpg",
    "email": "neurojspark@gmail.com",
-   "source": "pubmed"
+   "source": "pubmed",
+   "hidden": false
   },
   {
+   "id": "neuromd",
    "name": "이호원",
    "rank": "교수",
    "dept": "신경과학교실",
@@ -2112,10 +2265,10 @@
     "줄기세포 치료"
    ],
    "links": [
-    [
-     "https://research.knu.ac.kr/en/persons/ho-won-lee/",
-     "연구자 프로필"
-    ]
+    {
+     "url": "https://research.knu.ac.kr/en/persons/ho-won-lee/",
+     "label": "연구자 프로필"
+    }
    ],
    "contact": null,
    "style": [
@@ -2127,9 +2280,11 @@
    ],
    "photo": "photos/neuromd.jpg",
    "email": "neuromd@knu.ac.kr",
-   "source": "pure,pubmed"
+   "source": "pure,pubmed",
+   "hidden": false
   },
   {
+   "id": "okeye",
    "name": "김홍균",
    "rank": "교수",
    "dept": "안과학교실",
@@ -2141,10 +2296,10 @@
     "세포외소포"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTExMQ==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTExMQ==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2156,9 +2311,11 @@
    ],
    "photo": "photos/okeye.jpg",
    "email": "okeye@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "dongho_park",
    "name": "박동호",
    "rank": "교수",
    "dept": "안과학교실",
@@ -2170,10 +2327,10 @@
     "대사 재프로그래밍"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=CJjSb9MAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=CJjSb9MAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
    "contact": null,
    "style": [
@@ -2184,9 +2341,11 @@
    ],
    "photo": "photos/dongho_park.jpg",
    "email": "dongho_park@knu.ac.kr",
-   "source": "dir,bk"
+   "source": "dir,bk",
+   "hidden": false
   },
   {
+   "id": "ysw24neurorad",
    "name": "윤성원",
    "rank": "교수",
    "dept": "영상의학교실",
@@ -2198,10 +2357,10 @@
     "AI 영상"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNDI=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNDI=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2213,9 +2372,11 @@
    ],
    "photo": "photos/ysw24neurorad.jpg",
    "email": "ysw24neurorad@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "parkjs0802",
    "name": "박준석",
    "rank": "교수",
    "dept": "외과학교실",
@@ -2227,15 +2388,15 @@
     "외과"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE5Ng==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE5Ng==",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "김혜정",
-    "khj8232@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "김혜정",
+    "info": "khj8232@knu.ac.kr"
+   },
    "style": [
     "WS",
     "PS"
@@ -2245,9 +2406,11 @@
    ],
    "photo": "photos/parkjs0802.jpg",
    "email": "parkjs0802@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "namsy",
    "name": "남수연",
    "rank": "조교수",
    "dept": "융합연구진료센터",
@@ -2259,15 +2422,15 @@
     "중개연구"
    ],
    "links": [
-    [
-     "https://scholar.google.com/citations?user=gXYBmIMAAAAJ",
-     "Google Scholar"
-    ]
+    {
+     "url": "https://scholar.google.com/citations?user=gXYBmIMAAAAJ",
+     "label": "Google Scholar"
+    }
    ],
-   "contact": [
-    "김도향",
-    "kmdh77@knuh-ext.kr"
-   ],
+   "contact": {
+    "name": "김도향",
+    "info": "kmdh77@knuh-ext.kr"
+   },
    "style": [
     "DQ",
     "PQ"
@@ -2277,9 +2440,11 @@
    ],
    "photo": "photos/namsy.jpg",
    "email": "namsy@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "wintersj",
    "name": "성숙진",
    "rank": "부교수",
    "dept": "융합연구진료센터",
@@ -2291,10 +2456,10 @@
     "임상약리"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTQ=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTQ=",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2306,9 +2471,11 @@
    ],
    "photo": "photos/wintersj.jpg",
    "email": "wintersj@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "hjjung",
    "name": "정현준",
    "rank": "조교수",
    "dept": "융합연구진료센터",
@@ -2320,24 +2487,26 @@
     "계산생물학"
    ],
    "links": [
-    [
-     "https://hynjnjung.github.io/",
-     "연구실 홈페이지"
-    ]
+    {
+     "url": "https://hynjnjung.github.io/",
+     "label": "연구실 홈페이지"
+    }
    ],
-   "contact": [
-    "정현준",
-    "hjjung@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "정현준",
+    "info": "hjjung@knu.ac.kr"
+   },
    "style": [
     "DQ"
    ],
    "topics": [],
    "photo": "photos/hjjung.jpg",
    "email": "hjjung@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "tylee",
    "name": "이태영",
    "rank": "조교수",
    "dept": "정신건강의학교실",
@@ -2349,15 +2518,15 @@
     "정신질환 예측"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNTQ=",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTIxNTQ=",
+     "label": "교수 소개 페이지"
+    }
    ],
-   "contact": [
-    "이태영",
-    "tylee@knu.ac.kr"
-   ],
+   "contact": {
+    "name": "이태영",
+    "info": "tylee@knu.ac.kr"
+   },
    "style": [
     "DQ",
     "PQ"
@@ -2367,9 +2536,11 @@
    ],
    "photo": "photos/tylee.jpg",
    "email": "tylee@knu.ac.kr",
-   "source": "flyer"
+   "source": "flyer",
+   "hidden": false
   },
   {
+   "id": "hjleee",
    "name": "이현주",
    "rank": "부교수",
    "dept": "정형외과학교실",
@@ -2381,10 +2552,10 @@
     "정형외과"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE2Nw==",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTE2Nw==",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2396,9 +2567,11 @@
    ],
    "photo": "photos/hjleee.jpg",
    "email": "hjleee@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   },
   {
+   "id": "dlha",
    "name": "하대룡",
    "rank": "부교수",
    "dept": "피부과학교실",
@@ -2410,10 +2583,10 @@
     "건선"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTkz",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTkz",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2425,9 +2598,11 @@
    ],
    "photo": "photos/dlha.jpg",
    "email": "dlha@knu.ac.kr",
-   "source": "pubmed"
+   "source": "pubmed",
+   "hidden": false
   },
   {
+   "id": "abc2000",
    "name": "안병철",
    "rank": "교수",
    "dept": "핵의학교실",
@@ -2439,10 +2614,10 @@
     "세포외소포"
    ],
    "links": [
-    [
-     "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTM4",
-     "교수 소개 페이지"
-    ]
+    {
+     "url": "https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&mode=view&mv_data=aWR4PTM4",
+     "label": "교수 소개 페이지"
+    }
    ],
    "contact": null,
    "style": [
@@ -2453,7 +2628,8 @@
    ],
    "photo": "photos/abc2000.jpg",
    "email": "abc2000@knu.ac.kr",
-   "source": "bk"
+   "source": "bk",
+   "hidden": false
   }
  ]
 }

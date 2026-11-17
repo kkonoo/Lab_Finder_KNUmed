@@ -4,56 +4,93 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>인턴십 신청 관리</title>
+<title>관리자 · 의과대학 연구실 찾기</title>
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="form.css">
 </head>
 <body>
-<main class="sheet admin">
-  <div class="bar-top">
-    <div><p class="label">경북대학교 융합형 의사과학자 양성사업단</p><h2>인턴십 신청 관리</h2></div>
-    <p id="account" hidden><small id="accountEmail"></small> <button class="btn" id="logoutBtn" type="button">로그아웃</button></p>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img class="mark" src="img/symbol.png" alt="경북대학교"><span><small>경북대학교 융합형 의사과학자 양성사업단</small><b>관리자</b></span></a>
+    <p id="account" class="account" hidden><small id="accountEmail"></small> <button class="btn" id="logoutBtn" type="button">로그아웃</button></p>
   </div>
+</header>
 
+<main class="sheet admin">
   <div id="gate" class="gate" hidden></div>
 
   <div id="app" hidden>
     <div class="tabs" role="tablist">
       <button class="chip on" type="button" role="tab" data-tab="apps">신청</button>
-      <button class="chip" type="button" role="tab" data-tab="labs">보여 줄 교수님</button>
+      <button class="chip" type="button" role="tab" data-tab="profs">교수님</button>
+      <button class="chip" type="button" role="tab" data-tab="notice">모집 안내</button>
       <button class="chip" type="button" role="tab" data-tab="admins">관리자</button>
     </div>
 
+    <!-- 신청 -->
     <section data-panel="apps">
-    <div class="filters">
-      <select id="fRound" aria-label="회차"></select>
-      <select id="fTrack" aria-label="트랙"></select>
-      <select id="fStatus" aria-label="상태"></select>
-      <span class="grow"></span>
-      <button class="btn" id="refreshBtn" type="button">새로 고침</button>
-      <button class="btn" id="csvBtn" type="button">CSV 받기</button>
-    </div>
-    <div class="table-wrap">
-      <table class="list">
-        <thead><tr><th>신청</th><th>이름</th><th>학년</th><th>트랙</th><th>희망 연구실</th><th>스타일</th><th>상태</th></tr></thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
-    </section>
-
-    <section data-panel="labs" hidden>
-      <p class="hint">끈 교수님은 연구실 찾기의 카드·테스트 추천과 신청서의 연구실 목록에서 빠져요. 누르면 바로 저장돼요. 인쇄용 PDF에는 모두 나와요.</p>
-      <div class="filters">
-        <span id="labCount"></span>
+      <div class="toolbar">
+        <select id="fRound" aria-label="회차"></select>
+        <select id="fTrack" aria-label="트랙"></select>
+        <select id="fStatus" aria-label="상태"></select>
         <span class="grow"></span>
-        <button class="btn" id="allOnBtn" type="button">모두 켜기</button>
-        <button class="btn" id="allOffBtn" type="button">모두 끄기</button>
+        <button class="btn" id="refreshBtn" type="button">새로 고침</button>
+        <button class="btn" id="csvBtn" type="button">CSV 받기</button>
       </div>
-      <div id="labGroups"></div>
+      <div class="table-wrap">
+        <table class="list">
+          <thead><tr><th>신청</th><th>이름</th><th>학년</th><th>트랙</th><th>희망 연구실</th><th>스타일</th><th>상태</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
     </section>
 
+    <!-- 교수님 -->
+    <section data-panel="profs" hidden>
+      <div id="profsEmpty" class="gate" hidden>
+        <p>Firestore에 아직 교수님 목록이 없어요. 지금 연구실 찾기는 저장소의 <code>data/profs.json</code>(94명)을 보여 주고 있어요. 한 번 가져오면 여기서 더하고, 고치고, 켜고 끌 수 있어요.</p>
+        <p class="row"><button class="btn primary" id="importBtn" type="button">교수님 목록 가져오기</button></p>
+      </div>
+      <div id="profsMain" hidden>
+        <p class="hint">이름을 누르면 켜고 꺼요. 끈 교수님은 연구실 찾기와 신청서의 연구실 목록에서 빠져요. ✎를 누르면 소개를 고쳐요.</p>
+        <div class="toolbar">
+          <span id="labCount"></span>
+          <span class="grow"></span>
+          <button class="btn primary" id="addProfBtn" type="button">교수님 더하기</button>
+          <button class="btn" id="allOnBtn" type="button">모두 켜기</button>
+          <button class="btn" id="allOffBtn" type="button">모두 끄기</button>
+        </div>
+        <div id="labGroups"></div>
+      </div>
+    </section>
+
+    <!-- 모집 안내 -->
+    <section data-panel="notice" hidden>
+      <form id="noticeForm">
+        <p class="hint">인턴십 신청 페이지 맨 위의 모집 안내예요. 저장하면 바로 바뀌어요.</p>
+        <label class="check"><input type="checkbox" name="open"> 온라인 신청 받기 <small>끄면 신청서 대신 ‘지금은 온라인 신청을 받지 않아요’가 나와요</small></label>
+        <div class="two">
+          <label class="field">회차 <small>신청서에 같이 저장돼요. 신청 탭에서 회차별로 걸러 봐요</small><input name="round" maxlength="30" required placeholder="2027 하계"></label>
+          <label class="field">문의 메일 <small>메일 신청을 받는 주소</small><input name="mail" type="email" maxlength="100" required></label>
+        </div>
+        <label class="field">제목<input name="title" maxlength="100" required></label>
+        <label class="field">소개<textarea name="lead" rows="3" maxlength="1000"></textarea></label>
+        <label class="field">안내 항목 <small>빈 줄로 항목을 나눠요. 항목마다 첫 줄이 이름, 그 아래 줄이 내용이에요. 이메일과 주소는 링크가 돼요</small><textarea name="facts" rows="20"></textarea></label>
+        <label class="field">개인정보 보유 기간<input name="retention" maxlength="300" required></label>
+        <div class="actions">
+          <button class="btn primary" type="submit">저장</button>
+          <button class="btn" type="button" id="noticeDefaultBtn">기본값으로 채우기</button>
+          <a class="btn" href="apply.html" target="_blank" rel="noopener">신청 페이지 보기</a>
+          <p class="msg" id="noticeMsg"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- 관리자 -->
     <section data-panel="admins" hidden>
-      <p class="hint">여기 있는 구글 계정만 신청서를 보고 교수님을 켜고 꺼요.</p>
+      <p class="hint">여기 있는 구글 계정만 이 화면을 써요.</p>
       <ul class="admins" id="adminList"></ul>
       <form id="adminForm" class="inline">
         <input name="email" type="email" required placeholder="구글 계정 이메일" aria-label="추가할 관리자 이메일">
@@ -63,6 +100,7 @@
   </div>
 </main>
 
+<!-- 신청 보기 -->
 <dialog id="dlg">
   <form method="dialog" id="dlgForm">
     <h3 id="dlgTitle"></h3>
@@ -77,6 +115,45 @@
     </div>
   </form>
 </dialog>
+
+<!-- 교수님 더하기·고치기 -->
+<dialog id="profDlg">
+  <form method="dialog" id="profForm">
+    <h3 id="profTitle"></h3>
+    <div class="prof-top">
+      <div class="photo-edit">
+        <img id="profPhoto" alt="">
+        <label class="btn">사진 고르기<input type="file" name="photoFile" accept="image/*" hidden></label>
+      </div>
+      <div class="two">
+        <label class="field">이름<input name="name" maxlength="30" required></label>
+        <label class="field">직위<input name="rank" maxlength="20" placeholder="교수"></label>
+        <label class="field">교실·센터<input name="dept" maxlength="50" required list="deptList"></label>
+        <fieldset class="field"><legend>구분</legend>
+          <div class="choices"><label><input type="radio" name="kind" value="기초" required> 기초</label><label><input type="radio" name="kind" value="임상"> 임상</label></div>
+        </fieldset>
+      </div>
+    </div>
+    <label class="field">한 줄 소개 <small>학생이 읽기 쉽게, 해요체로</small><textarea name="line" rows="3" maxlength="300"></textarea></label>
+    <label class="field">키워드 <small>쉼표로 나눠요 (3개 정도)</small><input name="keywords" maxlength="200"></label>
+    <fieldset class="field"><legend>연구 스타일 <small>테스트 추천에 써요. 하나도 안 고르면 추천에서 빠져요</small></legend><div class="choices" id="styleChoices"></div></fieldset>
+    <fieldset class="field"><legend>관심 주제</legend><div class="choices" id="topicChoices"></div></fieldset>
+    <label class="field">링크 <small>한 줄에 하나씩, 주소 다음에 띄우고 글자 (예: https://lab.knu.ac.kr 연구실 홈페이지)</small><textarea name="links" rows="3"></textarea></label>
+    <div class="two">
+      <label class="field">이메일<input name="email" type="email" maxlength="100"></label>
+      <label class="field">담당자 <small>있으면 이름, 연락처</small><input name="contact" maxlength="150" placeholder="홍길동, 010-0000-0000"></label>
+    </div>
+    <label class="check"><input type="checkbox" name="shown"> 연구실 찾기에 보이기</label>
+    <div class="actions">
+      <button class="btn primary" value="save">저장</button>
+      <button class="btn danger" type="button" id="profDeleteBtn">삭제</button>
+      <button class="btn" value="cancel" formnovalidate>닫기</button>
+      <p class="msg" id="profMsg"></p>
+    </div>
+  </form>
+</dialog>
+<datalist id="deptList"></datalist>
+
 <p id="toast" class="toast" role="status" hidden></p>
 <script type="module" src="js/admin.js"></script>
 </body>

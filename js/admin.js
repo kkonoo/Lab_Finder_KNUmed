@@ -1,6 +1,8 @@
-// 관리자: 구글 로그인 → 인턴십 신청 보기, 선정·미선정과 메모, 삭제, CSV 받기, 보여 줄 교수님 켜고 끄기, 관리자 넣고 빼기
+// 관리자: 구글 로그인 → 신청(보기·선정·메모·삭제·CSV), 교수님(js/admin-profs.js), 모집 안내(js/admin-notice.js), 관리자 넣고 빼기
 // 누가 무엇을 할 수 있는지는 firestore.rules가 지켜요 (admins/{이메일} 문서가 있으면 관리자)
 import { enabled, auth, firestore, esc } from './firebase.js';
+import { initProfs } from './admin-profs.js';
+import { initNotice } from './admin-notice.js';
 
 const $ = s => document.querySelector(s);
 const STATUS = { submitted: '접수', approved: '선정', rejected: '미선정' };
@@ -62,21 +64,22 @@ async function start() {
       console.error(err);
     }
     if (!admin) {
-      showGate(`<p>${esc(email)} 계정은 아직 관리자가 아니에요. 다른 관리자에게 아래 ‘관리자’에서 추가해 달라고 부탁해 주세요.</p>`);
+      showGate(`<p>${esc(email)} 계정은 아직 관리자가 아니에요. 다른 관리자에게 ‘관리자’ 탭에서 더해 달라고 부탁해 주세요.</p>`);
       return;
     }
     $('#gate').hidden = true;
     $('#app').hidden = false;
     if (started) return;
     started = true;
-    const ctx = { db, fs, email };
+    const ctx = { db, fs, email, toast };
     initApplications(ctx);
-    initLabs(ctx);
+    initProfs(ctx);
+    initNotice(ctx);
     initAdmins(ctx);
   });
 }
 
-// 탭: 신청 · 보여 줄 교수님 · 관리자
+// 탭: 신청 · 교수님 · 모집 안내 · 관리자
 document.querySelector('.tabs').addEventListener('click', e => {
   const b = e.target.closest('[data-tab]');
   if (!b) return;
@@ -230,72 +233,6 @@ async function initApplications({ db, fs, email }) {
   });
 
   load();
-}
-
-// ---------- 보여 줄 교수님 ----------
-// Firestore config/labs의 off(끈 교수님 이름 목록). 누구나 읽고(js/firebase.js hiddenLabs) 관리자만 써요
-async function initLabs({ db, fs, email }) {
-  const box = $('#labGroups');
-  const ko = (a, b) => a.localeCompare(b, 'ko');
-  let profs = [], off = new Set();
-  try {
-    const [data, snap] = await Promise.all([fetch('data/profs.json').then(r => r.json()), fs.getDoc(fs.doc(db, 'config', 'labs'))]);
-    profs = data.profs;
-    off = new Set(snap.exists() ? snap.data().off || [] : []);
-  } catch (err) {
-    console.error(err);
-    // 규칙에 config/labs가 없으면 새로 고쳐도 안 돼요. 그때는 규칙을 다시 게시하라고 알려요
-    box.innerHTML = err.code === 'permission-denied'
-      ? '<p class="msg">보여 줄 교수님 설정을 읽을 권한이 없어요. Firebase 콘솔 › Firestore › 규칙에 저장소의 최신 <code>firestore.rules</code>를 붙여 넣고 게시해 주세요.</p>'
-      : '<p class="msg">교수님 목록을 불러오지 못했어요. 새로 고침해 주세요.</p>';
-    return;
-  }
-
-  function render(focus) {
-    const on = ps => ps.filter(p => !off.has(p.name)).length;
-    $('#labCount').textContent = `보이는 교수님 ${on(profs)} / ${profs.length}`;
-    box.innerHTML = ['기초', '임상'].map(kind => {
-      const ps = profs.filter(p => p.kind === kind);
-      if (!ps.length) return '';
-      const depts = [...new Set(ps.map(p => p.dept))].sort(ko);
-      return `<h3 class="sec">${kind} <small>${on(ps)} / ${ps.length}</small></h3>` + depts.map(d => `<div class="dept-row">
-        <p>${esc(d)}</p>
-        <div class="choices">${ps.filter(p => p.dept === d).sort((a, b) => ko(a.name, b.name)).map(p => `<label>
-          <input type="checkbox" value="${esc(p.name)}"${off.has(p.name) ? '' : ' checked'}> ${esc(p.name)}${p.line ? '' : ' <small>소개 없음</small>'}</label>`).join('')}</div>
-      </div>`).join('');
-    }).join('');
-    if (focus) box.querySelector(`input[value="${CSS.escape(focus)}"]`)?.focus();
-  }
-
-  // 화면을 먼저 바꾸고 저장해요. 못 하면 되돌려요 (빨리 여러 번 눌러도 순서대로 저장돼요)
-  async function save(next, done, focus) {
-    const prev = off;
-    off = next;
-    render(focus);
-    try {
-      await fs.setDoc(fs.doc(db, 'config', 'labs'), { off: [...next].sort(ko), updatedAt: fs.serverTimestamp(), updatedBy: email });
-      toast(done);
-    } catch (err) {
-      console.error(err);
-      off = prev;
-      render(focus);
-      toast('저장하지 못했어요. 다시 해 주세요.');
-    }
-  }
-
-  box.addEventListener('change', e => {
-    const c = e.target;
-    if (!c.matches('input[type=checkbox]')) return;
-    const next = new Set(off);
-    if (c.checked) next.delete(c.value);
-    else next.add(c.value);
-    save(next, `${c.value} 교수님을 ${c.checked ? '켰어요' : '껐어요'}.`, c.value);
-  });
-  $('#allOnBtn').addEventListener('click', () => save(new Set(), '모두 켰어요.'));
-  $('#allOffBtn').addEventListener('click', () => {
-    if (confirm('모든 교수님을 끌까요? 연구실 찾기에 아무도 안 보이게 돼요.')) save(new Set(profs.map(p => p.name)), '모두 껐어요.');
-  });
-  render();
 }
 
 // ---------- 관리자 ----------

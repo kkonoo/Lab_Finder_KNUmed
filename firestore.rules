@@ -2,8 +2,9 @@ rules_version = '2';
 
 // Firebase 콘솔 → Firestore → 규칙에 그대로 붙여 넣어요.
 // applications: 인턴십 신청 (로그인 없이 누구나 새로 내기만, 보는 건 관리자만)
+// profs/{id}: 교수님 소개 (누구나 읽고, 관리자만 씀. hidden이면 공개 화면에서 빠짐)
+// config/notice: 신청 페이지 모집 안내 (누구나 읽고, 관리자만 씀)
 // admins/{이메일}: 관리자 (구글 계정)
-// config/labs: 보여 줄 교수님 (끈 교수님 이름 목록)
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -50,12 +51,40 @@ service cloud.firestore {
       allow delete: if isAdmin() && email != myEmail();
     }
 
-    // 보여 줄 교수님: off = 끈 교수님 이름 목록. 누구나 읽고(연구실 찾기·신청 화면) 관리자만 써요
-    match /config/labs {
+    // 교수님 소개 (js/admin-profs.js와 같게). 사진은 경로(photos/…) 또는 관리자 화면에서 줄인 JPEG
+    function validProf() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['name', 'rank', 'dept', 'kind', 'line', 'keywords', 'links', 'contact', 'style', 'topics',
+                               'photo', 'email', 'source', 'hidden', 'updatedAt', 'updatedBy'])
+        && filled(d.name, 30) && text(d.rank, 20) && filled(d.dept, 50) && d.kind in ['기초', '임상']
+        && text(d.line, 300)
+        && d.keywords is list && d.keywords.size() <= 6
+        && d.links is list && d.links.size() <= 5
+        && (d.contact == null || d.contact is map)
+        && d.style is list && d.style.size() <= 8
+        && d.topics is list && d.topics.size() <= 10
+        && text(d.photo, 150000)
+        && text(d.email, 100) && text(d.source, 100)
+        && d.hidden is bool;
+    }
+    match /profs/{id} {
+      allow read: if true;
+      allow create, update: if isAdmin() && validProf();
+      allow delete: if isAdmin();
+    }
+
+    // 모집 안내 (js/admin-notice.js와 같게)
+    match /config/notice {
       allow read: if true;
       allow write: if isAdmin()
-        && request.resource.data.keys().hasOnly(['off', 'updatedAt', 'updatedBy'])
-        && request.resource.data.off is list && request.resource.data.off.size() <= 500;
+        && request.resource.data.keys().hasOnly(['open', 'round', 'mail', 'title', 'lead', 'facts', 'retention', 'updatedAt', 'updatedBy'])
+        && request.resource.data.open is bool
+        && filled(request.resource.data.round, 30)
+        && text(request.resource.data.mail, 100)
+        && text(request.resource.data.title, 100)
+        && text(request.resource.data.lead, 1000)
+        && request.resource.data.facts is list && request.resource.data.facts.size() <= 20
+        && text(request.resource.data.retention, 300);
     }
 
     match /applications/{id} {
