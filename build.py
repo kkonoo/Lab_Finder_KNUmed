@@ -33,7 +33,7 @@ def card(p):
     if p["contact"] and p["contact"] != [p["name"], p["email"]]:
         who, info = p["contact"]
         contact = f'<p class="contact"><span>담당자</span> {e(who)}' + (f"<br>{e(info)}" if info else "") + "</p>"
-    return f"""<article class="card" id="{e(p['name'])}">
+    return f"""<article class="card" id="{e(p['name'])}" data-kind="{e(p['kind'])}" data-dept="{e(p['dept'])}">
   <img class="photo" src="{e(p['photo'])}" alt="">
   <div class="id">
     <h3><span class="name">{e(p['name'])}</span><span class="rank">{e(p['rank'])}</span></h3>
@@ -49,8 +49,8 @@ def card(p):
 </article>"""
 
 
-def page(no, label, title, body, foot, cls=""):
-    return f"""<section class="page {cls}">
+def page(no, label, title, body, foot, cls="", kind=""):
+    return f"""<section class="page {cls}" data-kind="{e(kind)}">
   <header><p class="label">{e(label)}</p><h2>{e(title)}</h2></header>
   {body}
   <footer><span>{e(foot)}</span><span>{no}</span></footer>
@@ -73,19 +73,19 @@ def build():
                 where[p["name"]] = no
             pages.append(page(no, "의과대학 교수진", KIND_TITLE[kind],
                               '<div class="grid">' + "".join(card(p) for p in chunk) + "</div>",
-                              meta["footer"], "cont" if i else ""))
+                              meta["footer"], "cont" if i else "", kind))
 
     n_kind = {k: sum(p["kind"] == k for p in profs) for k in KINDS}
     n_dept = len({p["dept"] for p in profs})
-    index = "".join(f'<li><a href="#{e(n)}"><span>{e(n)}</span><i></i><b>{where[n]}</b></a></li>'
+    index = "".join(f'<li data-name="{e(n)}"><a href="#{e(n)}"><span>{e(n)}</span><i></i><b>{where[n]}</b></a></li>'
                     for n in sorted(where))
     cover = page(1, meta["school"], meta["title"], f"""
   <p class="lead">{e(meta['lead'])}</p>
   <div class="stats">
-    <div><b>{len(profs)}</b><span>교수진</span></div>
-    <div><b>{n_kind['기초']}</b><span>기초의학</span></div>
-    <div><b>{n_kind['임상']}</b><span>임상의학</span></div>
-    <div><b>{n_dept}</b><span>교실·센터</span></div>
+    <div><b data-n="all">{len(profs)}</b><span>교수진</span></div>
+    <div><b data-n="기초">{n_kind['기초']}</b><span>기초의학</span></div>
+    <div><b data-n="임상">{n_kind['임상']}</b><span>임상의학</span></div>
+    <div><b data-n="dept">{n_dept}</b><span>교실·센터</span></div>
   </div>
   <div class="cover-body">
     <div class="index"><h3>교수님 찾아보기 <small>가나다순 · 쪽</small></h3><ol>{index}</ol></div>
@@ -124,6 +124,7 @@ def build():
 {''.join(pages)}
 <script id="quiz-data" type="application/json">{quiz_json}</script>
 <script>{js}</script>
+<script type="module" src="js/labs.js"></script>
 </body></html>"""
     (ROOT / "index.html").write_text(out, encoding="utf-8")
     print(f"index.html: {len(profs)}명, {len(pages) + 1}쪽")

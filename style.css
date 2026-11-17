@@ -7,6 +7,7 @@
 :root { --text: #1f2430; --sub: #5f6673; --line: #e3e6eb; --accent: #2563C9; --tint: #e9f0fb; --photo: #e9ecf0; }
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body { margin: 0; background: #e9ebef; color: var(--text); font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   letter-spacing: -0.01em; line-height: 1.5; font-size: 9pt; word-break: keep-all; }
@@ -43,6 +44,11 @@ h2 { font-size: 20pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1.
 .kw { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: auto; }
 .kw li { color: var(--sub); font-size: 7.5pt; }
 .kw li::before { content: "#"; color: var(--accent); margin-right: 0.3mm; }
+/* 관리자가 끈 교수님을 뺀 화면 (js/labs.js): 카드를 종류마다 첫 쪽에 모아 이어서 보여 줌 */
+.page.flow { height: auto; }
+.page.flow .grid { grid-template-rows: none; grid-auto-rows: 78mm; }
+.page.flow > footer { display: none; }
+.card { break-inside: avoid; }
 .go { display: flex; flex-wrap: wrap; gap: 4mm; color: var(--accent); font-size: 8.5pt; font-weight: 600; }
 
 /* 표지 */

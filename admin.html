@@ -18,6 +18,13 @@
   <div id="gate" class="gate" hidden></div>
 
   <div id="app" hidden>
+    <div class="tabs" role="tablist">
+      <button class="chip on" type="button" role="tab" data-tab="apps">신청</button>
+      <button class="chip" type="button" role="tab" data-tab="labs">보여 줄 교수님</button>
+      <button class="chip" type="button" role="tab" data-tab="admins">관리자</button>
+    </div>
+
+    <section data-panel="apps">
     <div class="filters">
       <select id="fRound" aria-label="회차"></select>
       <select id="fTrack" aria-label="트랙"></select>
@@ -32,13 +39,27 @@
         <tbody id="rows"></tbody>
       </table>
     </div>
+    </section>
 
-    <h3 class="sec">관리자 <small>여기 있는 구글 계정만 신청서를 봐요</small></h3>
-    <ul class="admins" id="adminList"></ul>
-    <form id="adminForm" class="inline">
-      <input name="email" type="email" required placeholder="구글 계정 이메일" aria-label="추가할 관리자 이메일">
-      <button class="btn" type="submit">추가</button>
-    </form>
+    <section data-panel="labs" hidden>
+      <p class="hint">끈 교수님은 연구실 찾기의 카드·테스트 추천과 신청서의 연구실 목록에서 빠져요. 누르면 바로 저장돼요. 인쇄용 PDF에는 모두 나와요.</p>
+      <div class="filters">
+        <span id="labCount"></span>
+        <span class="grow"></span>
+        <button class="btn" id="allOnBtn" type="button">모두 켜기</button>
+        <button class="btn" id="allOffBtn" type="button">모두 끄기</button>
+      </div>
+      <div id="labGroups"></div>
+    </section>
+
+    <section data-panel="admins" hidden>
+      <p class="hint">여기 있는 구글 계정만 신청서를 보고 교수님을 켜고 꺼요.</p>
+      <ul class="admins" id="adminList"></ul>
+      <form id="adminForm" class="inline">
+        <input name="email" type="email" required placeholder="구글 계정 이메일" aria-label="추가할 관리자 이메일">
+        <button class="btn" type="submit">추가</button>
+      </form>
+    </section>
   </div>
 </main>
 

@@ -8,6 +8,8 @@
   const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(v => v[1]);
   const PER = 5;  // 추천 목록 한 쪽에 5분
   let step = -1, ans = [], picks = [], opts = [], code = "", recs = [], rpage = 0;
+  // 관리자가 끈 교수님(js/labs.js가 카드를 숨김)과 소개가 아직 없는 분(style 없음)은 추천에서 빼요
+  const pool = () => D.profs.filter(p => p.style.length && !document.getElementById(p.name)?.hidden);
 
   function intro() {
     return `<p class="label">의과대학 · 2분 테스트</p>
@@ -33,7 +35,7 @@
 
   function topics() {
     return head(N) + `<h3 class="q">가장 궁금한 주제는? <small>두 개까지</small></h3>
-      <div class="chips">${D.topics.map(([k, icon, label]) => {
+      <div class="chips">${D.topics.filter(([k]) => pool().some(p => p.topics.includes(k))).map(([k, icon, label]) => {
         const on = picks.includes(k);
         return `<button class="chip${on ? " on" : ""}" data-act="topic" data-k="${k}" aria-pressed="${on}"
           ${!on && picks.length >= 2 ? "disabled" : ""}>${icon} ${esc(label)}</button>`;
@@ -57,8 +59,8 @@
     const goal = n(g1) > n(g2) ? g1 : g2;
     code = method + goal;
     // 주제가 겹치면 3점 + 방법 점수(0~3, 내가 그 방법을 고른 횟수) + 목표가 같으면 1점. 유형이 여럿이면 가장 가까운 것
-    // 동점은 섞어서 매번 조금씩 다르게. 소개가 아직 없는 분(style 없음)은 빼요
-    const scored = shuffle(D.profs.filter(p => p.style.length)).map(p => {
+    // 동점은 섞어서 매번 조금씩 다르게
+    const scored = shuffle(pool()).map(p => {
       const hit = p.topics.filter(t => picks.includes(t)).length;
       const fit = Math.max(...p.style.map(st => n(st[0]) + (st[1] === goal ? 1 : 0)));
       const ok = p.style.includes(code) || (hit > 0 && p.style.some(st => st[0] === method));

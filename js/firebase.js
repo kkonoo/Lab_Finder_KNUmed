@@ -24,3 +24,19 @@ export function auth() {
 export function esc(s) {
   return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }
+
+// 관리자가 끈 교수님 이름 (Firestore config/labs의 off). 누구나 읽는 문서라 SDK 없이 REST로 가볍게 읽어요.
+// 설정 전이거나 못 읽으면 빈 목록 = 모두 보여요
+export async function hiddenLabs() {
+  if (!enabled) return new Set();
+  try {
+    const { projectId, apiKey } = firebaseConfig;
+    const r = await fetch(`https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/config/labs?key=${apiKey}`);
+    if (!r.ok) return new Set();
+    const doc = await r.json();
+    return new Set((doc.fields?.off?.arrayValue?.values || []).map(v => v.stringValue));
+  } catch (err) {
+    console.error(err);
+    return new Set();
+  }
+}

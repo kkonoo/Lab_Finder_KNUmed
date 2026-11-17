@@ -1,6 +1,6 @@
 // 인턴십 신청: 로그인 없이 누구나 Firestore applications에 신청서를 내요 (보는 건 관리자만, firestore.rules).
 // 연구실 찾기 테스트 결과는 주소로 넘어와요: apply.html?style=WQ&topics=cancer,brain
-import { enabled, firestore, esc } from './firebase.js';
+import { enabled, firestore, esc, hiddenLabs } from './firebase.js';
 
 const ROUND = '2026 동계';   // 모집 회차. 다음 모집 때 바꿔요 (관리자 화면에서 회차별로 걸러 봐요)
 const MAIL = 'hgysu03@knu.ac.kr';
@@ -25,10 +25,11 @@ if (enabled) {
 }
 
 async function init() {
-  // 희망 연구실 목록과 테스트 결과 이름 (못 불러와도 신청서는 쓸 수 있어요)
+  // 희망 연구실 목록(관리자가 끈 교수님은 빼고)과 테스트 결과 이름 (못 불러와도 신청서는 쓸 수 있어요)
   try {
-    const [profs, quiz] = await Promise.all(['data/profs.json', 'data/quiz.json'].map(u => fetch(u).then(r => r.json())));
-    $('#labList').innerHTML = profs.profs.map(p => `<option value="${esc(`${p.name} · ${p.dept}`)}">`).join('');
+    const [profs, quiz, off] = await Promise.all([...['data/profs.json', 'data/quiz.json'].map(u => fetch(u).then(r => r.json())), hiddenLabs()]);
+    $('#labList').innerHTML = profs.profs.filter(p => !off.has(p.name))
+      .map(p => `<option value="${esc(`${p.name} · ${p.dept}`)}">`).join('');
     if (style) {
       const [icon, name] = quiz.types[style];
       const labels = topics.map(k => quiz.topics.find(t => t[0] === k)?.[2]).filter(Boolean);

@@ -3,6 +3,7 @@ rules_version = '2';
 // Firebase 콘솔 → Firestore → 규칙에 그대로 붙여 넣어요.
 // applications: 인턴십 신청 (로그인 없이 누구나 새로 내기만, 보는 건 관리자만)
 // admins/{이메일}: 관리자 (구글 계정)
+// config/labs: 보여 줄 교수님 (끈 교수님 이름 목록)
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -47,6 +48,14 @@ service cloud.firestore {
       allow read: if isAdmin() || (request.auth != null && email == myEmail());
       allow create: if isAdmin() && email == email.lower();
       allow delete: if isAdmin() && email != myEmail();
+    }
+
+    // 보여 줄 교수님: off = 끈 교수님 이름 목록. 누구나 읽고(연구실 찾기·신청 화면) 관리자만 써요
+    match /config/labs {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['off', 'updatedAt', 'updatedBy'])
+        && request.resource.data.off is list && request.resource.data.off.size() <= 500;
     }
 
     match /applications/{id} {

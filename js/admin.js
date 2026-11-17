@@ -1,4 +1,4 @@
-// 관리자: 구글 로그인 → 인턴십 신청 보기, 선정·미선정과 메모, 삭제, CSV 받기, 관리자 넣고 빼기
+// 관리자: 구글 로그인 → 인턴십 신청 보기, 선정·미선정과 메모, 삭제, CSV 받기, 보여 줄 교수님 켜고 끄기, 관리자 넣고 빼기
 // 누가 무엇을 할 수 있는지는 firestore.rules가 지켜요 (admins/{이메일} 문서가 있으면 관리자)
 import { enabled, auth, firestore, esc } from './firebase.js';
 
@@ -71,9 +71,18 @@ async function start() {
     started = true;
     const ctx = { db, fs, email };
     initApplications(ctx);
+    initLabs(ctx);
     initAdmins(ctx);
   });
 }
+
+// 탭: 신청 · 보여 줄 교수님 · 관리자
+document.querySelector('.tabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-tab]');
+  if (!b) return;
+  document.querySelectorAll('.tabs [data-tab]').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('[data-panel]').forEach(p => (p.hidden = p.dataset.panel !== b.dataset.tab));
+});
 
 // ---------- 신청 ----------
 async function initApplications({ db, fs, email }) {
@@ -221,6 +230,69 @@ async function initApplications({ db, fs, email }) {
   });
 
   load();
+}
+
+// ---------- 보여 줄 교수님 ----------
+// Firestore config/labs의 off(끈 교수님 이름 목록). 누구나 읽고(js/firebase.js hiddenLabs) 관리자만 써요
+async function initLabs({ db, fs, email }) {
+  const box = $('#labGroups');
+  const ko = (a, b) => a.localeCompare(b, 'ko');
+  let profs = [], off = new Set();
+  try {
+    const [data, snap] = await Promise.all([fetch('data/profs.json').then(r => r.json()), fs.getDoc(fs.doc(db, 'config', 'labs'))]);
+    profs = data.profs;
+    off = new Set(snap.exists() ? snap.data().off || [] : []);
+  } catch (err) {
+    console.error(err);
+    box.innerHTML = '<p class="msg">교수님 목록을 불러오지 못했어요. 새로 고침해 주세요.</p>';
+    return;
+  }
+
+  function render(focus) {
+    const on = ps => ps.filter(p => !off.has(p.name)).length;
+    $('#labCount').textContent = `보이는 교수님 ${on(profs)} / ${profs.length}`;
+    box.innerHTML = ['기초', '임상'].map(kind => {
+      const ps = profs.filter(p => p.kind === kind);
+      if (!ps.length) return '';
+      const depts = [...new Set(ps.map(p => p.dept))].sort(ko);
+      return `<h3 class="sec">${kind} <small>${on(ps)} / ${ps.length}</small></h3>` + depts.map(d => `<div class="dept-row">
+        <p>${esc(d)}</p>
+        <div class="choices">${ps.filter(p => p.dept === d).sort((a, b) => ko(a.name, b.name)).map(p => `<label>
+          <input type="checkbox" value="${esc(p.name)}"${off.has(p.name) ? '' : ' checked'}> ${esc(p.name)}${p.line ? '' : ' <small>소개 없음</small>'}</label>`).join('')}</div>
+      </div>`).join('');
+    }).join('');
+    if (focus) box.querySelector(`input[value="${CSS.escape(focus)}"]`)?.focus();
+  }
+
+  // 화면을 먼저 바꾸고 저장해요. 못 하면 되돌려요 (빨리 여러 번 눌러도 순서대로 저장돼요)
+  async function save(next, done, focus) {
+    const prev = off;
+    off = next;
+    render(focus);
+    try {
+      await fs.setDoc(fs.doc(db, 'config', 'labs'), { off: [...next].sort(ko), updatedAt: fs.serverTimestamp(), updatedBy: email });
+      toast(done);
+    } catch (err) {
+      console.error(err);
+      off = prev;
+      render(focus);
+      toast('저장하지 못했어요. 다시 해 주세요.');
+    }
+  }
+
+  box.addEventListener('change', e => {
+    const c = e.target;
+    if (!c.matches('input[type=checkbox]')) return;
+    const next = new Set(off);
+    if (c.checked) next.delete(c.value);
+    else next.add(c.value);
+    save(next, `${c.value} 교수님을 ${c.checked ? '켰어요' : '껐어요'}.`, c.value);
+  });
+  $('#allOnBtn').addEventListener('click', () => save(new Set(), '모두 켰어요.'));
+  $('#allOffBtn').addEventListener('click', () => {
+    if (confirm('모든 교수님을 끌까요? 연구실 찾기에 아무도 안 보이게 돼요.')) save(new Set(profs.map(p => p.name)), '모두 껐어요.');
+  });
+  render();
 }
 
 // ---------- 관리자 ----------

@@ -69,6 +69,11 @@ dialog h3 { margin-bottom: 4mm; font-size: 14pt; }
 .info a { color: var(--accent); }
 dialog textarea { width: 100%; margin-top: 4mm; padding: 2.5mm 3mm; border: 1px solid var(--line); border-radius: 2mm; font: inherit; }
 .btn.danger { color: #c62828; }
+.tabs { display: flex; flex-wrap: wrap; gap: 2.5mm; margin: 6mm 0 2mm; }
+.hint { margin: 4mm 0 0; color: var(--sub); }
+.dept-row { display: grid; grid-template-columns: 44mm 1fr; gap: 3mm; padding: 2.5mm 0; border-bottom: 1px solid var(--line); }
+.dept-row > p { padding-top: 2mm; color: var(--sub); }
+.dept-row .choices label { padding: 1.5mm 3.5mm; }
 .admins { display: grid; gap: 1.5mm; margin-bottom: 3mm; }
 .admins li { display: flex; align-items: center; justify-content: space-between; gap: 3mm; }
 .inline { display: flex; flex-wrap: wrap; gap: 2.5mm; }
@@ -89,4 +94,6 @@ dialog textarea { width: 100%; margin-top: 4mm; padding: 2.5mm 3mm; border: 1px 
   .consent { padding: 14px; font-size: 14px; }
   table.list { font-size: 13px; }
   .info div { grid-template-columns: 1fr; gap: 0; }
+  .dept-row { grid-template-columns: 1fr; gap: 6px; }
+  .dept-row > p { padding-top: 0; }
 }

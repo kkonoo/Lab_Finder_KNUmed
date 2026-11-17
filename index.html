@@ -12,6 +12,7 @@
 :root { --text: #1f2430; --sub: #5f6673; --line: #e3e6eb; --accent: #2563C9; --tint: #e9f0fb; --photo: #e9ecf0; }
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body { margin: 0; background: #e9ebef; color: var(--text); font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   letter-spacing: -0.01em; line-height: 1.5; font-size: 9pt; word-break: keep-all; }
@@ -48,6 +49,11 @@ h2 { font-size: 20pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1.
 .kw { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: auto; }
 .kw li { color: var(--sub); font-size: 7.5pt; }
 .kw li::before { content: "#"; color: var(--accent); margin-right: 0.3mm; }
+/* 관리자가 끈 교수님을 뺀 화면 (js/labs.js): 카드를 종류마다 첫 쪽에 모아 이어서 보여 줌 */
+.page.flow { height: auto; }
+.page.flow .grid { grid-template-rows: none; grid-auto-rows: 78mm; }
+.page.flow > footer { display: none; }
+.card { break-inside: avoid; }
 .go { display: flex; flex-wrap: wrap; gap: 4mm; color: var(--accent); font-size: 8.5pt; font-weight: 600; }
 
 /* 표지 */
@@ -164,18 +170,18 @@ a { color: inherit; text-decoration: none; }
 <body>
 <section class="quiz" id="quiz"></section>
 <div id="book"></div>
-<section class="page cover">
+<section class="page cover" data-kind="">
   <header><p class="label">경북대학교 융합형 의사과학자 양성사업단</p><h2>의과대학 연구실 찾기</h2></header>
   
   <p class="lead">경북대학교 의과대학 기초·임상 교수님들의 연구실을 소개해요. 2분 테스트로 나에게 맞는 연구 스타일을 알아보고, 관심 가는 연구실을 찾아 연구 인턴십을 신청해 보세요.</p>
   <div class="stats">
-    <div><b>94</b><span>교수진</span></div>
-    <div><b>66</b><span>기초의학</span></div>
-    <div><b>28</b><span>임상의학</span></div>
-    <div><b>28</b><span>교실·센터</span></div>
+    <div><b data-n="all">94</b><span>교수진</span></div>
+    <div><b data-n="기초">66</b><span>기초의학</span></div>
+    <div><b data-n="임상">28</b><span>임상의학</span></div>
+    <div><b data-n="dept">28</b><span>교실·센터</span></div>
   </div>
   <div class="cover-body">
-    <div class="index"><h3>교수님 찾아보기 <small>가나다순 · 쪽</small></h3><ol><li><a href="#감신"><span>감신</span><i></i><b>9</b></a></li><li><a href="#강유나"><span>강유나</span><i></i><b>4</b></a></li><li><a href="#강지연"><span>강지연</span><i></i><b>11</b></a></li><li><a href="#구윤경"><span>구윤경</span><i></i><b>2</b></a></li><li><a href="#권용환"><span>권용환</span><i></i><b>13</b></a></li><li><a href="#권태균"><span>권태균</span><i></i><b>14</b></a></li><li><a href="#권태환"><span>권태환</span><i></i><b>7</b></a></li><li><a href="#김건엽"><span>김건엽</span><i></i><b>9</b></a></li><li><a href="#김균후"><span>김균후</span><i></i><b>7</b></a></li><li><a href="#김동선"><span>김동선</span><i></i><b>12</b></a></li><li><a href="#김동자"><span>김동자</span><i></i><b>4</b></a></li><li><a href="#김명남"><span>김명남</span><i></i><b>10</b></a></li><li><a href="#김문식"><span>김문식</span><i></i><b>4</b></a></li><li><a href="#김민지"><span>김민지</span><i></i><b>13</b></a></li><li><a href="#김범수"><span>김범수</span><i></i><b>15</b></a></li><li><a href="#김상욱"><span>김상욱</span><i></i><b>11</b></a></li><li><a href="#김상현"><span>김상현</span><i></i><b>8</b></a></li><li><a href="#김석호"><span>김석호</span><i></i><b>3</b></a></li><li><a href="#김성준"><span>김성준</span><i></i><b>3</b></a></li><li><a href="#김예리"><span>김예리</span><i></i><b>2</b></a></li><li><a href="#김은수"><span>김은수</span><i></i><b>13</b></a></li><li><a href="#김인겸"><span>김인겸</span><i></i><b>9</b></a></li><li><a href="#김정민"><span>김정민</span><i></i><b>3</b></a></li><li><a href="#김정은"><span>김정은</span><i></i><b>5</b></a></li><li><a href="#김종연"><span>김종연</span><i></i><b>9</b></a></li><li><a href="#김하정"><span>김하정</span><i></i><b>6</b></a></li><li><a href="#김홍균"><span>김홍균</span><i></i><b>15</b></a></li><li><a href="#남성욱"><span>남성욱</span><i></i><b>5</b></a></li><li><a href="#남수연"><span>남수연</span><i></i><b>16</b></a></li><li><a href="#남용석"><span>남용석</span><i></i><b>12</b></a></li><li><a href="#박권무"><span>박권무</span><i></i><b>12</b></a></li><li><a href="#박근규"><span>박근규</span><i></i><b>13</b></a></li><li><a href="#박낭운"><span>박낭운</span><i></i><b>8</b></a></li><li><a href="#박동호"><span>박동호</span><i></i><b>16</b></a></li><li><a href="#박준석"><span>박준석</span><i></i><b>16</b></a></li><li><a href="#박지영"><span>박지영</span><i></i><b>4</b></a></li><li><a href="#박진성"><span>박진성</span><i></i><b>15</b></a></li><li><a href="#박태인"><span>박태인</span><i></i><b>4</b></a></li><li><a href="#박한기"><span>박한기</span><i></i><b>13</b></a></li><li><a href="#배재성"><span>배재성</span><i></i><b>7</b></a></li><li><a href="#백문창"><span>백문창</span><i></i><b>5</b></a></li><li><a href="#부용출"><span>부용출</span><i></i><b>6</b></a></li><li><a href="#서안나"><span>서안나</span><i></i><b>5</b></a></li><li><a href="#서인철"><span>서인철</span><i></i><b>2</b></a></li><li><a href="#석경호"><span>석경호</span><i></i><b>9</b></a></li><li><a href="#성기웅"><span>성기웅</span><i></i><b>10</b></a></li><li><a href="#성숙진"><span>성숙진</span><i></i><b>16</b></a></li><li><a href="#성영관"><span>성영관</span><i></i><b>2</b></a></li><li><a href="#신민상"><span>신민상</span><i></i><b>3</b></a></li><li><a href="#신지연"><span>신지연</span><i></i><b>10</b></a></li><li><a href="#안병철"><span>안병철</span><i></i><b>17</b></a></li><li><a href="#양수"><span>양수</span><i></i><b>11</b></a></li><li><a href="#양은경"><span>양은경</span><i></i><b>7</b></a></li><li><a href="#여상희"><span>여상희</span><i></i><b>11</b></a></li><li><a href="#오진영"><span>오진영</span><i></i><b>14</b></a></li><li><a href="#유정수"><span>유정수</span><i></i><b>6</b></a></li><li><a href="#윤길숙"><span>윤길숙</span><i></i><b>5</b></a></li><li><a href="#윤성원"><span>윤성원</span><i></i><b>16</b></a></li><li><a href="#윤영란"><span>윤영란</span><i></i><b>6</b></a></li><li><a href="#이경민"><span>이경민</span><i></i><b>12</b></a></li><li><a href="#이덕희"><span>이덕희</span><i></i><b>10</b></a></li><li><a href="#이병헌"><span>이병헌</span><i></i><b>8</b></a></li><li><a href="#이원기"><span>이원기</span><i></i><b>12</b></a></li><li><a href="#이유미"><span>이유미</span><i></i><b>10</b></a></li><li><a href="#이재만"><span>이재만</span><i></i><b>8</b></a></li><li><a href="#이정현"><span>이정현</span><i></i><b>11</b></a></li><li><a href="#이제철"><span>이제철</span><i></i><b>3</b></a></li><li><a href="#이종걸"><span>이종걸</span><i></i><b>2</b></a></li><li><a href="#이주헌"><span>이주헌</span><i></i><b>15</b></a></li><li><a href="#이충용"><span>이충용</span><i></i><b>4</b></a></li><li><a href="#이태영"><span>이태영</span><i></i><b>17</b></a></li><li><a href="#이현주"><span>이현주</span><i></i><b>17</b></a></li><li><a href="#이호원"><span>이호원</span><i></i><b>15</b></a></li><li><a href="#이화림"><span>이화림</span><i></i><b>9</b></a></li><li><a href="#장세영"><span>장세영</span><i></i><b>13</b></a></li><li><a href="#장용민"><span>장용민</span><i></i><b>6</b></a></li><li><a href="#전성우"><span>전성우</span><i></i><b>14</b></a></li><li><a href="#전재한"><span>전재한</span><i></i><b>14</b></a></li><li><a href="#정성문"><span>정성문</span><i></i><b>12</b></a></li><li><a href="#정현준"><span>정현준</span><i></i><b>16</b></a></li><li><a href="#정호윤"><span>정호윤</span><i></i><b>15</b></a></li><li><a href="#최연경"><span>최연경</span><i></i><b>14</b></a></li><li><a href="#최은경"><span>최은경</span><i></i><b>11</b></a></li><li><a href="#최제용"><span>최제용</span><i></i><b>8</b></a></li><li><a href="#최지웅"><span>최지웅</span><i></i><b>3</b></a></li><li><a href="#하대룡"><span>하대룡</span><i></i><b>17</b></a></li><li><a href="#하은지"><span>하은지</span><i></i><b>6</b></a></li><li><a href="#한만훈"><span>한만훈</span><i></i><b>5</b></a></li><li><a href="#한승우"><span>한승우</span><i></i><b>14</b></a></li><li><a href="#한형수"><span>한형수</span><i></i><b>7</b></a></li><li><a href="#허근"><span>허근</span><i></i><b>8</b></a></li><li><a href="#홍남수"><span>홍남수</span><i></i><b>10</b></a></li><li><a href="#홍연철"><span>홍연철</span><i></i><b>2</b></a></li><li><a href="#홍장원"><span>홍장원</span><i></i><b>7</b></a></li></ol></div>
+    <div class="index"><h3>교수님 찾아보기 <small>가나다순 · 쪽</small></h3><ol><li data-name="감신"><a href="#감신"><span>감신</span><i></i><b>9</b></a></li><li data-name="강유나"><a href="#강유나"><span>강유나</span><i></i><b>4</b></a></li><li data-name="강지연"><a href="#강지연"><span>강지연</span><i></i><b>11</b></a></li><li data-name="구윤경"><a href="#구윤경"><span>구윤경</span><i></i><b>2</b></a></li><li data-name="권용환"><a href="#권용환"><span>권용환</span><i></i><b>13</b></a></li><li data-name="권태균"><a href="#권태균"><span>권태균</span><i></i><b>14</b></a></li><li data-name="권태환"><a href="#권태환"><span>권태환</span><i></i><b>7</b></a></li><li data-name="김건엽"><a href="#김건엽"><span>김건엽</span><i></i><b>9</b></a></li><li data-name="김균후"><a href="#김균후"><span>김균후</span><i></i><b>7</b></a></li><li data-name="김동선"><a href="#김동선"><span>김동선</span><i></i><b>12</b></a></li><li data-name="김동자"><a href="#김동자"><span>김동자</span><i></i><b>4</b></a></li><li data-name="김명남"><a href="#김명남"><span>김명남</span><i></i><b>10</b></a></li><li data-name="김문식"><a href="#김문식"><span>김문식</span><i></i><b>4</b></a></li><li data-name="김민지"><a href="#김민지"><span>김민지</span><i></i><b>13</b></a></li><li data-name="김범수"><a href="#김범수"><span>김범수</span><i></i><b>15</b></a></li><li data-name="김상욱"><a href="#김상욱"><span>김상욱</span><i></i><b>11</b></a></li><li data-name="김상현"><a href="#김상현"><span>김상현</span><i></i><b>8</b></a></li><li data-name="김석호"><a href="#김석호"><span>김석호</span><i></i><b>3</b></a></li><li data-name="김성준"><a href="#김성준"><span>김성준</span><i></i><b>3</b></a></li><li data-name="김예리"><a href="#김예리"><span>김예리</span><i></i><b>2</b></a></li><li data-name="김은수"><a href="#김은수"><span>김은수</span><i></i><b>13</b></a></li><li data-name="김인겸"><a href="#김인겸"><span>김인겸</span><i></i><b>9</b></a></li><li data-name="김정민"><a href="#김정민"><span>김정민</span><i></i><b>3</b></a></li><li data-name="김정은"><a href="#김정은"><span>김정은</span><i></i><b>5</b></a></li><li data-name="김종연"><a href="#김종연"><span>김종연</span><i></i><b>9</b></a></li><li data-name="김하정"><a href="#김하정"><span>김하정</span><i></i><b>6</b></a></li><li data-name="김홍균"><a href="#김홍균"><span>김홍균</span><i></i><b>15</b></a></li><li data-name="남성욱"><a href="#남성욱"><span>남성욱</span><i></i><b>5</b></a></li><li data-name="남수연"><a href="#남수연"><span>남수연</span><i></i><b>16</b></a></li><li data-name="남용석"><a href="#남용석"><span>남용석</span><i></i><b>12</b></a></li><li data-name="박권무"><a href="#박권무"><span>박권무</span><i></i><b>12</b></a></li><li data-name="박근규"><a href="#박근규"><span>박근규</span><i></i><b>13</b></a></li><li data-name="박낭운"><a href="#박낭운"><span>박낭운</span><i></i><b>8</b></a></li><li data-name="박동호"><a href="#박동호"><span>박동호</span><i></i><b>16</b></a></li><li data-name="박준석"><a href="#박준석"><span>박준석</span><i></i><b>16</b></a></li><li data-name="박지영"><a href="#박지영"><span>박지영</span><i></i><b>4</b></a></li><li data-name="박진성"><a href="#박진성"><span>박진성</span><i></i><b>15</b></a></li><li data-name="박태인"><a href="#박태인"><span>박태인</span><i></i><b>4</b></a></li><li data-name="박한기"><a href="#박한기"><span>박한기</span><i></i><b>13</b></a></li><li data-name="배재성"><a href="#배재성"><span>배재성</span><i></i><b>7</b></a></li><li data-name="백문창"><a href="#백문창"><span>백문창</span><i></i><b>5</b></a></li><li data-name="부용출"><a href="#부용출"><span>부용출</span><i></i><b>6</b></a></li><li data-name="서안나"><a href="#서안나"><span>서안나</span><i></i><b>5</b></a></li><li data-name="서인철"><a href="#서인철"><span>서인철</span><i></i><b>2</b></a></li><li data-name="석경호"><a href="#석경호"><span>석경호</span><i></i><b>9</b></a></li><li data-name="성기웅"><a href="#성기웅"><span>성기웅</span><i></i><b>10</b></a></li><li data-name="성숙진"><a href="#성숙진"><span>성숙진</span><i></i><b>16</b></a></li><li data-name="성영관"><a href="#성영관"><span>성영관</span><i></i><b>2</b></a></li><li data-name="신민상"><a href="#신민상"><span>신민상</span><i></i><b>3</b></a></li><li data-name="신지연"><a href="#신지연"><span>신지연</span><i></i><b>10</b></a></li><li data-name="안병철"><a href="#안병철"><span>안병철</span><i></i><b>17</b></a></li><li data-name="양수"><a href="#양수"><span>양수</span><i></i><b>11</b></a></li><li data-name="양은경"><a href="#양은경"><span>양은경</span><i></i><b>7</b></a></li><li data-name="여상희"><a href="#여상희"><span>여상희</span><i></i><b>11</b></a></li><li data-name="오진영"><a href="#오진영"><span>오진영</span><i></i><b>14</b></a></li><li data-name="유정수"><a href="#유정수"><span>유정수</span><i></i><b>6</b></a></li><li data-name="윤길숙"><a href="#윤길숙"><span>윤길숙</span><i></i><b>5</b></a></li><li data-name="윤성원"><a href="#윤성원"><span>윤성원</span><i></i><b>16</b></a></li><li data-name="윤영란"><a href="#윤영란"><span>윤영란</span><i></i><b>6</b></a></li><li data-name="이경민"><a href="#이경민"><span>이경민</span><i></i><b>12</b></a></li><li data-name="이덕희"><a href="#이덕희"><span>이덕희</span><i></i><b>10</b></a></li><li data-name="이병헌"><a href="#이병헌"><span>이병헌</span><i></i><b>8</b></a></li><li data-name="이원기"><a href="#이원기"><span>이원기</span><i></i><b>12</b></a></li><li data-name="이유미"><a href="#이유미"><span>이유미</span><i></i><b>10</b></a></li><li data-name="이재만"><a href="#이재만"><span>이재만</span><i></i><b>8</b></a></li><li data-name="이정현"><a href="#이정현"><span>이정현</span><i></i><b>11</b></a></li><li data-name="이제철"><a href="#이제철"><span>이제철</span><i></i><b>3</b></a></li><li data-name="이종걸"><a href="#이종걸"><span>이종걸</span><i></i><b>2</b></a></li><li data-name="이주헌"><a href="#이주헌"><span>이주헌</span><i></i><b>15</b></a></li><li data-name="이충용"><a href="#이충용"><span>이충용</span><i></i><b>4</b></a></li><li data-name="이태영"><a href="#이태영"><span>이태영</span><i></i><b>17</b></a></li><li data-name="이현주"><a href="#이현주"><span>이현주</span><i></i><b>17</b></a></li><li data-name="이호원"><a href="#이호원"><span>이호원</span><i></i><b>15</b></a></li><li data-name="이화림"><a href="#이화림"><span>이화림</span><i></i><b>9</b></a></li><li data-name="장세영"><a href="#장세영"><span>장세영</span><i></i><b>13</b></a></li><li data-name="장용민"><a href="#장용민"><span>장용민</span><i></i><b>6</b></a></li><li data-name="전성우"><a href="#전성우"><span>전성우</span><i></i><b>14</b></a></li><li data-name="전재한"><a href="#전재한"><span>전재한</span><i></i><b>14</b></a></li><li data-name="정성문"><a href="#정성문"><span>정성문</span><i></i><b>12</b></a></li><li data-name="정현준"><a href="#정현준"><span>정현준</span><i></i><b>16</b></a></li><li data-name="정호윤"><a href="#정호윤"><span>정호윤</span><i></i><b>15</b></a></li><li data-name="최연경"><a href="#최연경"><span>최연경</span><i></i><b>14</b></a></li><li data-name="최은경"><a href="#최은경"><span>최은경</span><i></i><b>11</b></a></li><li data-name="최제용"><a href="#최제용"><span>최제용</span><i></i><b>8</b></a></li><li data-name="최지웅"><a href="#최지웅"><span>최지웅</span><i></i><b>3</b></a></li><li data-name="하대룡"><a href="#하대룡"><span>하대룡</span><i></i><b>17</b></a></li><li data-name="하은지"><a href="#하은지"><span>하은지</span><i></i><b>6</b></a></li><li data-name="한만훈"><a href="#한만훈"><span>한만훈</span><i></i><b>5</b></a></li><li data-name="한승우"><a href="#한승우"><span>한승우</span><i></i><b>14</b></a></li><li data-name="한형수"><a href="#한형수"><span>한형수</span><i></i><b>7</b></a></li><li data-name="허근"><a href="#허근"><span>허근</span><i></i><b>8</b></a></li><li data-name="홍남수"><a href="#홍남수"><span>홍남수</span><i></i><b>10</b></a></li><li data-name="홍연철"><a href="#홍연철"><span>홍연철</span><i></i><b>2</b></a></li><li data-name="홍장원"><a href="#홍장원"><span>홍장원</span><i></i><b>7</b></a></li></ol></div>
     <aside class="home">
       <figure class="qr big"><svg viewBox="0 0 33 33" class="segno"><path class="qrline" stroke="#1f2430" d="M0 0.5h7m1 0h3m3 0h1m2 0h3m3 0h1m2 0h7m-33 1h1m5 0h1m2 0h1m1 0h2m1 0h1m1 0h2m8 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m2 0h3m2 0h1m1 0h4m1 0h3m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h5m1 0h1m5 0h4m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h5m7 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m2 0h3m2 0h2m4 0h1m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-23 1h3m1 0h1m1 0h1m1 0h1m2 0h3m-23 1h7m1 0h2m1 0h2m3 0h1m5 0h2m2 0h2m3 0h1m-33 1h3m1 0h2m2 0h2m2 0h3m1 0h1m1 0h3m2 0h1m2 0h2m1 0h2m-28 1h1m2 0h2m1 0h5m4 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m-25 1h2m1 0h1m4 0h1m4 0h2m1 0h1m1 0h1m2 0h5m-33 1h1m1 0h1m3 0h4m1 0h6m1 0h1m2 0h3m1 0h1m1 0h3m1 0h2m-33 1h3m1 0h2m1 0h1m1 0h1m7 0h1m4 0h1m3 0h1m2 0h1m1 0h2m-32 1h1m4 0h2m1 0h1m2 0h3m1 0h3m1 0h1m1 0h1m1 0h5m1 0h2m-30 1h4m1 0h2m2 0h1m4 0h6m1 0h4m2 0h2m-30 1h10m3 0h2m3 0h2m1 0h1m1 0h2m1 0h2m3 0h1m-29 1h2m6 0h2m2 0h2m1 0h3m1 0h1m2 0h2m1 0h2m1 0h1m-32 1h1m2 0h1m1 0h2m2 0h1m2 0h3m2 0h1m2 0h2m2 0h4m1 0h1m-31 1h1m1 0h3m2 0h1m1 0h9m3 0h3m2 0h7m-32 1h2m2 0h2m1 0h3m2 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m1 0h1m1 0h2m-33 1h1m1 0h3m3 0h4m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h1m-33 1h1m2 0h2m1 0h2m1 0h5m2 0h2m4 0h1m3 0h1m1 0h4m-32 1h1m4 0h1m1 0h2m1 0h3m1 0h1m3 0h1m1 0h3m2 0h2m1 0h5m-33 1h1m1 0h10m2 0h2m1 0h2m3 0h1m1 0h5m3 0h1m-25 1h4m2 0h4m1 0h2m3 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m1 0h1m1 0h1m1 0h4m1 0h1m3 0h4m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h4m2 0h2m1 0h2m1 0h5m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h2m5 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h3m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h1m3 0h1m1 0h2m4 0h2m-28 1h1m5 0h1m1 0h3m4 0h2m1 0h1m1 0h3m2 0h1m2 0h3m-31 1h7m4 0h1m2 0h2m1 0h2m1 0h1m1 0h3m2 0h1m1 0h3"/></svg></figure>
       <p class="book"><b>휴대폰으로 보기</b><br>나에게 맞는 연구실 찾기 테스트도 있어요<br><a href="https://kkonoo.github.io/Lab_Finder_KNUmed/">kkonoo.github.io/<wbr>Lab_Finder_KNUmed</a></p>
@@ -186,9 +192,9 @@ a { color: inherit; text-decoration: none; }
   </div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>1</span></footer>
 </section>
-<section class="page ">
+<section class="page " data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="구윤경">
+  <div class="grid"><article class="card" id="구윤경" data-kind="기초" data-dept="기생충학·열대의학교실">
   <img class="photo" src="photos/kuku1819.jpg" alt="">
   <div class="id">
     <h3><span class="name">구윤경</span><span class="rank">교수</span></h3>
@@ -201,7 +207,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>말라리아</li><li>약물 내성</li><li>열대의학</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI4Mw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="홍연철">
+</article><article class="card" id="홍연철" data-kind="기초" data-dept="기생충학·열대의학교실">
   <img class="photo" src="photos/ychong.jpg" alt="">
   <div class="id">
     <h3><span class="name">홍연철</span><span class="rank">교수</span></h3>
@@ -214,7 +220,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>병원성 원충</li><li>가시아메바</li><li>진단법</li></ul>
     <p class="go"><a href="https://research.knu.ac.kr/en/persons/yeonchul-hong/">연구자 프로필 →</a></p>
   </div>
-</article><article class="card" id="김예리">
+</article><article class="card" id="김예리" data-kind="기초" data-dept="면역학교실">
   <img class="photo" src="photos/yell_90.jpg" alt="">
   <div class="id">
     <h3><span class="name">김예리</span><span class="rank">조교수</span></h3>
@@ -227,7 +233,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>난청</li><li>이독성</li><li>미토콘드리아</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=TFwfm9IAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="서인철">
+</article><article class="card" id="서인철" data-kind="기초" data-dept="면역학교실">
   <img class="photo" src="photos/iseo.jpg" alt="">
   <div class="id">
     <h3><span class="name">서인철</span><span class="rank">부교수</span></h3>
@@ -240,7 +246,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>마이크로바이옴</li><li>다중오믹스</li><li>코호트 연구</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=zDr9aw0AAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="성영관">
+</article><article class="card" id="성영관" data-kind="기초" data-dept="면역학교실">
   <img class="photo" src="photos/ysung.jpg" alt="">
   <div class="id">
     <h3><span class="name">성영관</span><span class="rank">교수</span></h3>
@@ -253,7 +259,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>탈모</li><li>모낭 재생</li><li>피부생물학</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=fU6gc4EAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="이종걸">
+</article><article class="card" id="이종걸" data-kind="기초" data-dept="면역학교실">
   <img class="photo" src="photos/jglee.jpg" alt="">
   <div class="id">
     <h3><span class="name">이종걸</span><span class="rank">조교수</span></h3>
@@ -268,9 +274,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>2</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="최지웅">
+  <div class="grid"><article class="card" id="최지웅" data-kind="기초" data-dept="면역학교실">
   <img class="photo" src="photos/wooong0110.jpg" alt="">
   <div class="id">
     <h3><span class="name">최지웅</span><span class="rank">조교수</span></h3>
@@ -283,7 +289,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>나노의학</li><li>세포외소포</li><li>면역치료</li></ul>
     <p class="go"><a href="https://choi-dds.knu.ac.kr/">연구실 홈페이지 →</a></p>
   </div>
-</article><article class="card" id="김석호">
+</article><article class="card" id="김석호" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/shukhokim.jpg" alt="">
   <div class="id">
     <h3><span class="name">김석호</span><span class="rank">부교수</span></h3>
@@ -296,7 +302,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>다제내성균</li><li>박테리오파지</li><li>엔도리신</li></ul>
     <p class="go"><a href="https://www.researchgate.net/lab/Shukho-Kim-Lab-MDR-Phages-Shukho-Kim">ResearchGate →</a></p>
   </div>
-</article><article class="card" id="김성준">
+</article><article class="card" id="김성준" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/sjkim0080.jpg" alt="">
   <div class="id">
     <h3><span class="name">김성준</span><span class="rank">조교수</span></h3>
@@ -309,7 +315,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>바이러스</li><li>미토콘드리아</li><li>백신</li></ul>
     <p class="go"><a href="http://kimlab.knu.ac.kr/">연구실 홈페이지 →</a></p>
   </div>
-</article><article class="card" id="김정민">
+</article><article class="card" id="김정민" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/minkim.jpg" alt="">
   <div class="id">
     <h3><span class="name">김정민</span><span class="rank">교수</span></h3>
@@ -322,7 +328,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>박테리오파지</li><li>슈퍼박테리아</li><li>장내 미생물</li></ul>
     <p class="go"><a href="https://research.knu.ac.kr/en/persons/jungmin-kim/">연구자 프로필 →</a></p>
   </div>
-</article><article class="card" id="신민상">
+</article><article class="card" id="신민상" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/shinms.jpg" alt="">
   <div class="id">
     <h3><span class="name">신민상</span><span class="rank">교수</span></h3>
@@ -335,7 +341,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>다제내성균</li><li>세균 병원성</li><li>항균 단백질</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=o4Ucq2sAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="이제철">
+</article><article class="card" id="이제철" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/leejc.jpg" alt="">
   <div class="id">
     <h3><span class="name">이제철</span><span class="rank">교수</span></h3>
@@ -350,9 +356,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>3</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="이충용">
+  <div class="grid"><article class="card" id="이충용" data-kind="기초" data-dept="미생물학교실">
   <img class="photo" src="photos/cylee87.jpg" alt="">
   <div class="id">
     <h3><span class="name">이충용</span><span class="rank">부교수</span></h3>
@@ -365,7 +371,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>인플루엔자</li><li>바이러스 진화</li><li>백신</li></ul>
     <p class="go"><a href="http://virus.knu.ac.kr/">연구실 홈페이지 →</a></p>
   </div>
-</article><article class="card" id="강유나">
+</article><article class="card" id="강유나" data-kind="기초" data-dept="법의학교실">
   <img class="photo" src="photos/dkr3jh.jpg" alt="">
   <div class="id">
     <h3><span class="name">강유나</span><span class="rank">교수</span></h3>
@@ -378,7 +384,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김동자">
+</article><article class="card" id="김동자" data-kind="기초" data-dept="법의학교실">
   <img class="photo" src="photos/nvury4.jpg" alt="">
   <div class="id">
     <h3><span class="name">김동자</span><span class="rank">부교수</span></h3>
@@ -391,7 +397,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김문식">
+</article><article class="card" id="김문식" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/u7axjb.jpg" alt="">
   <div class="id">
     <h3><span class="name">김문식</span><span class="rank">부교수</span></h3>
@@ -404,7 +410,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="박지영">
+</article><article class="card" id="박지영" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/jyparkmd.jpg" alt="">
   <div class="id">
     <h3><span class="name">박지영</span><span class="rank">교수</span></h3>
@@ -417,7 +423,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>분자병리</li><li>암 유전체</li><li>NGS</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMwNw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박태인">
+</article><article class="card" id="박태인" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/sysnv7.jpg" alt="">
   <div class="id">
     <h3><span class="name">박태인</span><span class="rank">교수</span></h3>
@@ -432,9 +438,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>4</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="서안나">
+  <div class="grid"><article class="card" id="서안나" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/3hv6yg.jpg" alt="">
   <div class="id">
     <h3><span class="name">서안나</span><span class="rank">부교수</span></h3>
@@ -447,7 +453,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="윤길숙">
+</article><article class="card" id="윤길숙" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/qn8znb.jpg" alt="">
   <div class="id">
     <h3><span class="name">윤길숙</span><span class="rank">교수</span></h3>
@@ -460,7 +466,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="한만훈">
+</article><article class="card" id="한만훈" data-kind="기초" data-dept="병리학교실">
   <img class="photo" src="photos/tbqfvz.jpg" alt="">
   <div class="id">
     <h3><span class="name">한만훈</span><span class="rank">조교수</span></h3>
@@ -473,7 +479,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김정은">
+</article><article class="card" id="김정은" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/kjeun.jpg" alt="">
   <div class="id">
     <h3><span class="name">김정은</span><span class="rank">교수</span></h3>
@@ -486,7 +492,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>근골격계</li><li>뼈 대사</li><li>뼈 전이</li></ul>
     <p class="go"><a href="https://kimslab-2fwddodh.manus.space/">연구실 홈페이지 →</a></p>
   </div>
-</article><article class="card" id="남성욱">
+</article><article class="card" id="남성욱" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/nams.jpg" alt="">
   <div class="id">
     <h3><span class="name">남성욱</span><span class="rank">교수</span></h3>
@@ -499,7 +505,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>오가노이드</li><li>바이오칩</li><li>이미지 분석</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI2NA==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="백문창">
+</article><article class="card" id="백문창" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/mcbaek.jpg" alt="">
   <div class="id">
     <h3><span class="name">백문창</span><span class="rank">교수</span></h3>
@@ -514,9 +520,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>5</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="부용출">
+  <div class="grid"><article class="card" id="부용출" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/pqss78.jpg" alt="">
   <div class="id">
     <h3><span class="name">부용출</span><span class="rank">교수</span></h3>
@@ -529,7 +535,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>멜라닌 합성 억제</li><li>피부 항산화·항노화</li><li>혈관 내피 전단응력</li></ul>
     
   </div>
-</article><article class="card" id="유정수">
+</article><article class="card" id="유정수" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/yooj.jpg" alt="">
   <div class="id">
     <h3><span class="name">유정수</span><span class="rank">교수</span></h3>
@@ -542,7 +548,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>방사성의약품</li><li>분자영상</li><li>나노의학</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI2Nw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="윤영란">
+</article><article class="card" id="윤영란" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/yry.jpg" alt="">
   <div class="id">
     <h3><span class="name">윤영란</span><span class="rank">교수</span></h3>
@@ -555,7 +561,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>임상약리</li><li>대사체학</li><li>약동학</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI2Ng==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="장용민">
+</article><article class="card" id="장용민" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/ychang.jpg" alt="">
   <div class="id">
     <h3><span class="name">장용민</span><span class="rank">교수</span></h3>
@@ -568,7 +574,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>MRI</li><li>분자영상</li><li>뇌영상</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI2NQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="하은지">
+</article><article class="card" id="하은지" data-kind="기초" data-dept="분자의학교실">
   <img class="photo" src="photos/eha.jpg" alt="">
   <div class="id">
     <h3><span class="name">하은지</span><span class="rank">조교수</span></h3>
@@ -581,7 +587,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>멀티오믹스</li><li>질병유전체</li><li>BI</li></ul>
     <p class="go"><a href="https://halab.knu.ac.kr">연구실 홈페이지 →</a><a href="https://halab-quest.knu.ac.kr">HaLab Quest →</a></p>
   </div>
-</article><article class="card" id="김하정">
+</article><article class="card" id="김하정" data-kind="기초" data-dept="생리학교실">
   <img class="photo" src="photos/kimhajeong.jpg" alt="">
   <div class="id">
     <h3><span class="name">김하정</span><span class="rank">부교수</span></h3>
@@ -596,9 +602,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>6</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="배재성">
+  <div class="grid"><article class="card" id="배재성" data-kind="기초" data-dept="생리학교실">
   <img class="photo" src="photos/jsbae.jpg" alt="">
   <div class="id">
     <h3><span class="name">배재성</span><span class="rank">교수</span></h3>
@@ -611,7 +617,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>알츠하이머병</li><li>지질 신호</li><li>신경줄기세포</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMxNw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="양은경">
+</article><article class="card" id="양은경" data-kind="기초" data-dept="생리학교실">
   <img class="photo" src="photos/3k9x7m.jpg" alt="">
   <div class="id">
     <h3><span class="name">양은경</span><span class="rank">교수</span></h3>
@@ -624,7 +630,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="한형수">
+</article><article class="card" id="한형수" data-kind="기초" data-dept="생리학교실">
   <img class="photo" src="photos/hshan.jpg" alt="">
   <div class="id">
     <h3><span class="name">한형수</span><span class="rank">교수</span></h3>
@@ -637,7 +643,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>멀티오믹스</li><li>인공지능</li><li>디지털 헬스케어</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=8Sr9DVcAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="홍장원">
+</article><article class="card" id="홍장원" data-kind="기초" data-dept="생리학교실">
   <img class="photo" src="photos/cwhong.jpg" alt="">
   <div class="id">
     <h3><span class="name">홍장원</span><span class="rank">교수</span></h3>
@@ -650,7 +656,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>호중구</li><li>선천면역</li><li>지방간</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=5HZWdXcAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="권태환">
+</article><article class="card" id="권태환" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/thkwon.jpg" alt="">
   <div class="id">
     <h3><span class="name">권태환</span><span class="rank">교수</span></h3>
@@ -663,7 +669,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>신장 생리</li><li>수분통로단백</li><li>전사 조절</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=e2JgDbkAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="김균후">
+</article><article class="card" id="김균후" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/khookim.jpg" alt="">
   <div class="id">
     <h3><span class="name">김균후</span><span class="rank">조교수</span></h3>
@@ -678,9 +684,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>7</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="박낭운">
+  <div class="grid"><article class="card" id="박낭운" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/5hra8s.jpg" alt="">
   <div class="id">
     <h3><span class="name">박낭운</span><span class="rank">교수</span></h3>
@@ -693,7 +699,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="이병헌">
+</article><article class="card" id="이병헌" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/leebh.jpg" alt="">
   <div class="id">
     <h3><span class="name">이병헌</span><span class="rank">교수</span></h3>
@@ -706,7 +712,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>펩타이드</li><li>표적항암제</li><li>종양미세환경</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=NCNICI0AAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="이재만">
+</article><article class="card" id="이재만" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/jaemanlee.jpg" alt="">
   <div class="id">
     <h3><span class="name">이재만</span><span class="rank">부교수</span></h3>
@@ -719,7 +725,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>핵수용체</li><li>간 대사</li><li>자가포식</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMxMA==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="최제용">
+</article><article class="card" id="최제용" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/jechoi.jpg" alt="">
   <div class="id">
     <h3><span class="name">최제용</span><span class="rank">교수</span></h3>
@@ -732,7 +738,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>뼈 생물학</li><li>골다공증</li><li>골관절염</li></ul>
     <p class="go"><a href="https://bonechoi.knu.ac.kr/">연구실 홈페이지 →</a></p>
   </div>
-</article><article class="card" id="허근">
+</article><article class="card" id="허근" data-kind="기초" data-dept="생화학·세포생물학교실">
   <img class="photo" src="photos/keunhur.jpg" alt="">
   <div class="id">
     <h3><span class="name">허근</span><span class="rank">교수</span></h3>
@@ -745,7 +751,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>액체생검</li><li>엑소좀 RNA</li><li>암 바이오마커</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMxMQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="김상현">
+</article><article class="card" id="김상현" data-kind="기초" data-dept="약리학교실">
   <img class="photo" src="photos/shkim72.jpg" alt="">
   <div class="id">
     <h3><span class="name">김상현</span><span class="rank">교수</span></h3>
@@ -760,9 +766,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>8</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="김인겸">
+  <div class="grid"><article class="card" id="김인겸" data-kind="기초" data-dept="약리학교실">
   <img class="photo" src="photos/fghmeg.jpg" alt="">
   <div class="id">
     <h3><span class="name">김인겸</span><span class="rank">교수</span></h3>
@@ -775,7 +781,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="석경호">
+</article><article class="card" id="석경호" data-kind="기초" data-dept="약리학교실">
   <img class="photo" src="photos/ksuk.jpg" alt="">
   <div class="id">
     <h3><span class="name">석경호</span><span class="rank">교수</span></h3>
@@ -788,7 +794,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>신경염증</li><li>교세포</li><li>뇌 노화</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI5OQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="이화림">
+</article><article class="card" id="이화림" data-kind="기초" data-dept="약리학교실">
   <img class="photo" src="photos/hrl.jpg" alt="">
   <div class="id">
     <h3><span class="name">이화림</span><span class="rank">조교수</span></h3>
@@ -801,7 +807,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>3D 바이오프린팅</li><li>인공장기</li><li>폐 모델</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI0MzM=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="감신">
+</article><article class="card" id="감신" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/t3zc54.jpg" alt="">
   <div class="id">
     <h3><span class="name">감신</span><span class="rank">교수</span></h3>
@@ -814,7 +820,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김건엽">
+</article><article class="card" id="김건엽" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/2qypku.jpg" alt="">
   <div class="id">
     <h3><span class="name">김건엽</span><span class="rank">교수</span></h3>
@@ -827,7 +833,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김종연">
+</article><article class="card" id="김종연" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/wghtr3.jpg" alt="">
   <div class="id">
     <h3><span class="name">김종연</span><span class="rank">부교수</span></h3>
@@ -842,9 +848,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>9</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="신지연">
+  <div class="grid"><article class="card" id="신지연" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/t8z272.jpg" alt="">
   <div class="id">
     <h3><span class="name">신지연</span><span class="rank">부교수</span></h3>
@@ -857,7 +863,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="이덕희">
+</article><article class="card" id="이덕희" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/77qq9t.jpg" alt="">
   <div class="id">
     <h3><span class="name">이덕희</span><span class="rank">교수</span></h3>
@@ -870,7 +876,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="이유미">
+</article><article class="card" id="이유미" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/gd4kmt.jpg" alt="">
   <div class="id">
     <h3><span class="name">이유미</span><span class="rank">교수</span></h3>
@@ -883,7 +889,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="홍남수">
+</article><article class="card" id="홍남수" data-kind="기초" data-dept="예방의학교실">
   <img class="photo" src="photos/gdmyy5.jpg" alt="">
   <div class="id">
     <h3><span class="name">홍남수</span><span class="rank">교수</span></h3>
@@ -896,7 +902,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김명남">
+</article><article class="card" id="김명남" data-kind="기초" data-dept="의공학교실">
   <img class="photo" src="photos/gmc6sa.jpg" alt="">
   <div class="id">
     <h3><span class="name">김명남</span><span class="rank">교수</span></h3>
@@ -909,7 +915,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>이식형 보청기</li><li>음성 신호 처리</li><li>의료영상 딥러닝</li></ul>
     
   </div>
-</article><article class="card" id="성기웅">
+</article><article class="card" id="성기웅" data-kind="기초" data-dept="의공학교실">
   <img class="photo" src="photos/ngyqt2.jpg" alt="">
   <div class="id">
     <h3><span class="name">성기웅</span><span class="rank">조교수</span></h3>
@@ -924,9 +930,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>10</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="이정현">
+  <div class="grid"><article class="card" id="이정현" data-kind="기초" data-dept="의공학교실">
   <img class="photo" src="photos/g6agzf.jpg" alt="">
   <div class="id">
     <h3><span class="name">이정현</span><span class="rank">조교수</span></h3>
@@ -939,7 +945,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>이식형 보청기 회로</li><li>청각 자극 경로</li><li>무선 생체계측</li></ul>
     
   </div>
-</article><article class="card" id="강지연">
+</article><article class="card" id="강지연" data-kind="기초" data-dept="의료인문·의학교육학교실">
   <img class="photo" src="photos/y5ytfd.jpg" alt="">
   <div class="id">
     <h3><span class="name">강지연</span><span class="rank">조교수</span></h3>
@@ -952,7 +958,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="여상희">
+</article><article class="card" id="여상희" data-kind="기초" data-dept="의료인문·의학교육학교실">
   <img class="photo" src="photos/hywp5n.jpg" alt="">
   <div class="id">
     <h3><span class="name">여상희</span><span class="rank">부교수</span></h3>
@@ -965,7 +971,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="최은경">
+</article><article class="card" id="최은경" data-kind="기초" data-dept="의료인문·의학교육학교실">
   <img class="photo" src="photos/ttx78q.jpg" alt="">
   <div class="id">
     <h3><span class="name">최은경</span><span class="rank">부교수</span></h3>
@@ -978,7 +984,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"></ul>
     
   </div>
-</article><article class="card" id="김상욱">
+</article><article class="card" id="김상욱" data-kind="기초" data-dept="의료정보학교실">
   <img class="photo" src="photos/p5hwcb.jpg" alt="">
   <div class="id">
     <h3><span class="name">김상욱</span><span class="rank">조교수</span></h3>
@@ -991,7 +997,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>기계학습</li><li>의도 이해</li><li>의료 인공지능</li></ul>
     <p class="go"><a href="https://scholar.google.co.kr/citations?user=npgSlq4AAAAJ">Google Scholar →</a><a href="https://sites.google.com/view/aimlab-knu/home">AIM Lab →</a></p>
   </div>
-</article><article class="card" id="양수">
+</article><article class="card" id="양수" data-kind="기초" data-dept="의료정보학교실">
   <img class="photo" src="photos/ap8jdx.jpg" alt="">
   <div class="id">
     <h3><span class="name">양수</span><span class="rank">조교수</span></h3>
@@ -1006,9 +1012,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>11</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="기초">
   <header><p class="label">의과대학 교수진</p><h2>기초의학 교실</h2></header>
-  <div class="grid"><article class="card" id="이원기">
+  <div class="grid"><article class="card" id="이원기" data-kind="기초" data-dept="의료정보학교실">
   <img class="photo" src="photos/3tcy63.jpg" alt="">
   <div class="id">
     <h3><span class="name">이원기</span><span class="rank">교수</span></h3>
@@ -1021,7 +1027,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>의학통계</li><li>예후 예측 모형</li><li>임상연구 설계</li></ul>
     
   </div>
-</article><article class="card" id="정성문">
+</article><article class="card" id="정성문" data-kind="기초" data-dept="의료정보학교실">
   <img class="photo" src="photos/mgwdp6.jpg" alt="">
   <div class="id">
     <h3><span class="name">정성문</span><span class="rank">부교수</span></h3>
@@ -1034,7 +1040,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>의료 인공지능</li><li>보행 분석</li><li>임상 영상 분석</li></ul>
     
   </div>
-</article><article class="card" id="김동선">
+</article><article class="card" id="김동선" data-kind="기초" data-dept="해부학교실">
   <img class="photo" src="photos/doskim.jpg" alt="">
   <div class="id">
     <h3><span class="name">김동선</span><span class="rank">교수</span></h3>
@@ -1047,7 +1053,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>후성유전체</li><li>미세먼지</li><li>바이오마커</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMyMw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="남용석">
+</article><article class="card" id="남용석" data-kind="기초" data-dept="해부학교실">
   <img class="photo" src="photos/namys.jpg" alt="">
   <div class="id">
     <h3><span class="name">남용석</span><span class="rank">조교수</span></h3>
@@ -1060,7 +1066,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>임상해부학</li><li>신경·혈관</li><li>수술 해부</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIxMjg=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박권무">
+</article><article class="card" id="박권무" data-kind="기초" data-dept="해부학교실">
   <img class="photo" src="photos/kmpark.jpg" alt="">
   <div class="id">
     <h3><span class="name">박권무</span><span class="rank">교수</span></h3>
@@ -1073,7 +1079,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>신장 손상</li><li>섬유화</li><li>일차섬모</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTMyMg==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="이경민">
+</article><article class="card" id="이경민" data-kind="기초" data-dept="해부학교실">
   <img class="photo" src="photos/irislkm.jpg" alt="">
   <div class="id">
     <h3><span class="name">이경민</span><span class="rank">교수</span></h3>
@@ -1088,9 +1094,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>12</span></footer>
-</section><section class="page ">
+</section><section class="page " data-kind="임상">
   <header><p class="label">의과대학 교수진</p><h2>임상의학 교실</h2></header>
-  <div class="grid"><article class="card" id="권용환">
+  <div class="grid"><article class="card" id="권용환" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/tear9754006.jpg" alt="">
   <div class="id">
     <h3><span class="name">권용환</span><span class="rank">부교수</span></h3>
@@ -1103,7 +1109,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>헬리코박터</li><li>위암</li><li>단일세포</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIyNg==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="김민지">
+</article><article class="card" id="김민지" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/mjikim.jpg" alt="">
   <div class="id">
     <h3><span class="name">김민지</span><span class="rank">조교수</span></h3>
@@ -1116,7 +1122,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>내분비대사</li><li>당뇨병</li><li>미토콘드리아</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI0MzQ=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="김은수">
+</article><article class="card" id="김은수" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/dandy813.jpg" alt="">
   <div class="id">
     <h3><span class="name">김은수</span><span class="rank">교수</span></h3>
@@ -1129,7 +1135,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>염증성 장질환</li><li>장내 미생물</li><li>AI 진단</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIyNw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박근규">
+</article><article class="card" id="박근규" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/kpark.jpg" alt="">
   <div class="id">
     <h3><span class="name">박근규</span><span class="rank">교수</span></h3>
@@ -1142,7 +1148,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>암 대사</li><li>간암</li><li>페롭토시스</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIyMQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박한기">
+</article><article class="card" id="박한기" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/hankipark.jpg" alt="">
   <div class="id">
     <h3><span class="name">박한기</span><span class="rank">부교수</span></h3>
@@ -1155,7 +1161,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>알레르기</li><li>천식</li><li>장내 미생물</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIyMw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="장세영">
+</article><article class="card" id="장세영" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/vocjsy.jpg" alt="">
   <div class="id">
     <h3><span class="name">장세영</span><span class="rank">교수</span></h3>
@@ -1170,9 +1176,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>13</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="임상">
   <header><p class="label">의과대학 교수진</p><h2>임상의학 교실</h2></header>
-  <div class="grid"><article class="card" id="전성우">
+  <div class="grid"><article class="card" id="전성우" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/swjeon.jpg" alt="">
   <div class="id">
     <h3><span class="name">전성우</span><span class="rank">교수</span></h3>
@@ -1185,7 +1191,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>치료 내시경</li><li>헬리코박터</li><li>위암</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIzMA==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="전재한">
+</article><article class="card" id="전재한" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/jeonjh.jpg" alt="">
   <div class="id">
     <h3><span class="name">전재한</span><span class="rank">부교수</span></h3>
@@ -1198,7 +1204,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>미토콘드리아</li><li>대사질환</li><li>심장·신장</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIyNQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="최연경">
+</article><article class="card" id="최연경" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/ykchoi.jpg" alt="">
   <div class="id">
     <h3><span class="name">최연경</span><span class="rank">부교수</span></h3>
@@ -1211,7 +1217,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>대사 재프로그래밍</li><li>간암</li><li>지방간염</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIxNA==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="한승우">
+</article><article class="card" id="한승우" data-kind="임상" data-dept="내과학교실">
   <img class="photo" src="photos/kiefedr.jpg" alt="">
   <div class="id">
     <h3><span class="name">한승우</span><span class="rank">부교수</span></h3>
@@ -1224,7 +1230,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>골관절염</li><li>연골세포 대사</li><li>나노입자</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIwNQ==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="오진영">
+</article><article class="card" id="오진영" data-kind="임상" data-dept="마취통증의학교실">
   <img class="photo" src="photos/sgcms3.jpg" alt="">
   <div class="id">
     <h3><span class="name">오진영</span><span class="rank">조교수</span></h3>
@@ -1237,7 +1243,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>통증의학</li><li>신경차단</li><li>골·연골</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTQx">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="권태균">
+</article><article class="card" id="권태균" data-kind="임상" data-dept="비뇨기과학교실">
   <img class="photo" src="photos/tgkwon.jpg" alt="">
   <div class="id">
     <h3><span class="name">권태균</span><span class="rank">교수</span></h3>
@@ -1252,9 +1258,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>14</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="임상">
   <header><p class="label">의과대학 교수진</p><h2>임상의학 교실</h2></header>
-  <div class="grid"><article class="card" id="김범수">
+  <div class="grid"><article class="card" id="김범수" data-kind="임상" data-dept="비뇨기과학교실">
   <img class="photo" src="photos/urokbs.jpg" alt="">
   <div class="id">
     <h3><span class="name">김범수</span><span class="rank">교수</span></h3>
@@ -1267,7 +1273,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>요로결석</li><li>신장 재생</li><li>바이오소재</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTg5">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="이주헌">
+</article><article class="card" id="이주헌" data-kind="임상" data-dept="산부인과학교실">
   <img class="photo" src="photos/gyjhlee.jpg" alt="">
   <div class="id">
     <h3><span class="name">이주헌</span><span class="rank">조교수</span></h3>
@@ -1280,7 +1286,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>부인종양</li><li>HPV</li><li>딥러닝</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIxMzk=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="정호윤">
+</article><article class="card" id="정호윤" data-kind="임상" data-dept="성형외과학교실">
   <img class="photo" src="photos/hy-chung.jpg" alt="">
   <div class="id">
     <h3><span class="name">정호윤</span><span class="rank">교수</span></h3>
@@ -1293,7 +1299,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>혈관기형</li><li>오가노이드</li><li>조직 재건</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTE1Mg==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박진성">
+</article><article class="card" id="박진성" data-kind="임상" data-dept="신경과학교실">
   <img class="photo" src="photos/neurojspark.jpg" alt="">
   <div class="id">
     <h3><span class="name">박진성</span><span class="rank">부교수</span></h3>
@@ -1306,7 +1312,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>신경근육질환</li><li>루게릭병</li><li>SBMA</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTI5">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="이호원">
+</article><article class="card" id="이호원" data-kind="임상" data-dept="신경과학교실">
   <img class="photo" src="photos/neuromd.jpg" alt="">
   <div class="id">
     <h3><span class="name">이호원</span><span class="rank">교수</span></h3>
@@ -1319,7 +1325,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>신경퇴행성 질환</li><li>바이오마커</li><li>줄기세포 치료</li></ul>
     <p class="go"><a href="https://research.knu.ac.kr/en/persons/ho-won-lee/">연구자 프로필 →</a></p>
   </div>
-</article><article class="card" id="김홍균">
+</article><article class="card" id="김홍균" data-kind="임상" data-dept="안과학교실">
   <img class="photo" src="photos/okeye.jpg" alt="">
   <div class="id">
     <h3><span class="name">김홍균</span><span class="rank">교수</span></h3>
@@ -1334,9 +1340,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>15</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="임상">
   <header><p class="label">의과대학 교수진</p><h2>임상의학 교실</h2></header>
-  <div class="grid"><article class="card" id="박동호">
+  <div class="grid"><article class="card" id="박동호" data-kind="임상" data-dept="안과학교실">
   <img class="photo" src="photos/dongho_park.jpg" alt="">
   <div class="id">
     <h3><span class="name">박동호</span><span class="rank">교수</span></h3>
@@ -1349,7 +1355,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>망막</li><li>황반변성</li><li>대사 재프로그래밍</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=CJjSb9MAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="윤성원">
+</article><article class="card" id="윤성원" data-kind="임상" data-dept="영상의학교실">
   <img class="photo" src="photos/ysw24neurorad.jpg" alt="">
   <div class="id">
     <h3><span class="name">윤성원</span><span class="rank">교수</span></h3>
@@ -1362,7 +1368,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>뇌혈관 중재</li><li>의료로봇</li><li>AI 영상</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIxNDI=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="박준석">
+</article><article class="card" id="박준석" data-kind="임상" data-dept="외과학교실">
   <img class="photo" src="photos/parkjs0802.jpg" alt="">
   <div class="id">
     <h3><span class="name">박준석</span><span class="rank">교수</span></h3>
@@ -1375,7 +1381,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>바이오소재</li><li>액체생검</li><li>외과</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTE5Ng==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="남수연">
+</article><article class="card" id="남수연" data-kind="임상" data-dept="융합연구진료센터">
   <img class="photo" src="photos/namsy.jpg" alt="">
   <div class="id">
     <h3><span class="name">남수연</span><span class="rank">조교수</span></h3>
@@ -1388,7 +1394,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>위암</li><li>오가노이드</li><li>중개연구</li></ul>
     <p class="go"><a href="https://scholar.google.com/citations?user=gXYBmIMAAAAJ">Google Scholar →</a></p>
   </div>
-</article><article class="card" id="성숙진">
+</article><article class="card" id="성숙진" data-kind="임상" data-dept="융합연구진료센터">
   <img class="photo" src="photos/wintersj.jpg" alt="">
   <div class="id">
     <h3><span class="name">성숙진</span><span class="rank">부교수</span></h3>
@@ -1401,7 +1407,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>대사체학</li><li>지질체학</li><li>임상약리</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTQ=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="정현준">
+</article><article class="card" id="정현준" data-kind="임상" data-dept="융합연구진료센터">
   <img class="photo" src="photos/hjjung.jpg" alt="">
   <div class="id">
     <h3><span class="name">정현준</span><span class="rank">조교수</span></h3>
@@ -1416,9 +1422,9 @@ a { color: inherit; text-decoration: none; }
   </div>
 </article></div>
   <footer><span>경북대학교 융합형 의사과학자 양성사업단</span><span>16</span></footer>
-</section><section class="page cont">
+</section><section class="page cont" data-kind="임상">
   <header><p class="label">의과대학 교수진</p><h2>임상의학 교실</h2></header>
-  <div class="grid"><article class="card" id="이태영">
+  <div class="grid"><article class="card" id="이태영" data-kind="임상" data-dept="정신건강의학교실">
   <img class="photo" src="photos/tylee.jpg" alt="">
   <div class="id">
     <h3><span class="name">이태영</span><span class="rank">조교수</span></h3>
@@ -1431,7 +1437,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>조현병</li><li>뇌영상</li><li>정신질환 예측</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTIxNTQ=">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="이현주">
+</article><article class="card" id="이현주" data-kind="임상" data-dept="정형외과학교실">
   <img class="photo" src="photos/hjleee.jpg" alt="">
   <div class="id">
     <h3><span class="name">이현주</span><span class="rank">부교수</span></h3>
@@ -1444,7 +1450,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>재활공학</li><li>생체역학</li><li>정형외과</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTE2Nw==">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="하대룡">
+</article><article class="card" id="하대룡" data-kind="임상" data-dept="피부과학교실">
   <img class="photo" src="photos/dlha.jpg" alt="">
   <div class="id">
     <h3><span class="name">하대룡</span><span class="rank">부교수</span></h3>
@@ -1457,7 +1463,7 @@ a { color: inherit; text-decoration: none; }
     <ul class="kw"><li>피부과 AI</li><li>피부암</li><li>건선</li></ul>
     <p class="go"><a href="https://med.knu.ac.kr/pages/sub.htm?nav_code=knu1670413496&amp;mode=view&amp;mv_data=aWR4PTkz">교수 소개 페이지 →</a></p>
   </div>
-</article><article class="card" id="안병철">
+</article><article class="card" id="안병철" data-kind="임상" data-dept="핵의학교실">
   <img class="photo" src="photos/abc2000.jpg" alt="">
   <div class="id">
     <h3><span class="name">안병철</span><span class="rank">교수</span></h3>
@@ -1484,6 +1490,8 @@ a { color: inherit; text-decoration: none; }
   const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(v => v[1]);
   const PER = 5;  // 추천 목록 한 쪽에 5분
   let step = -1, ans = [], picks = [], opts = [], code = "", recs = [], rpage = 0;
+  // 관리자가 끈 교수님(js/labs.js가 카드를 숨김)과 소개가 아직 없는 분(style 없음)은 추천에서 빼요
+  const pool = () => D.profs.filter(p => p.style.length && !document.getElementById(p.name)?.hidden);
 
   function intro() {
     return `<p class="label">의과대학 · 2분 테스트</p>
@@ -1509,7 +1517,7 @@ a { color: inherit; text-decoration: none; }
 
   function topics() {
     return head(N) + `<h3 class="q">가장 궁금한 주제는? <small>두 개까지</small></h3>
-      <div class="chips">${D.topics.map(([k, icon, label]) => {
+      <div class="chips">${D.topics.filter(([k]) => pool().some(p => p.topics.includes(k))).map(([k, icon, label]) => {
         const on = picks.includes(k);
         return `<button class="chip${on ? " on" : ""}" data-act="topic" data-k="${k}" aria-pressed="${on}"
           ${!on && picks.length >= 2 ? "disabled" : ""}>${icon} ${esc(label)}</button>`;
@@ -1533,8 +1541,8 @@ a { color: inherit; text-decoration: none; }
     const goal = n(g1) > n(g2) ? g1 : g2;
     code = method + goal;
     // 주제가 겹치면 3점 + 방법 점수(0~3, 내가 그 방법을 고른 횟수) + 목표가 같으면 1점. 유형이 여럿이면 가장 가까운 것
-    // 동점은 섞어서 매번 조금씩 다르게. 소개가 아직 없는 분(style 없음)은 빼요
-    const scored = shuffle(D.profs.filter(p => p.style.length)).map(p => {
+    // 동점은 섞어서 매번 조금씩 다르게
+    const scored = shuffle(pool()).map(p => {
       const hit = p.topics.filter(t => picks.includes(t)).length;
       const fit = Math.max(...p.style.map(st => n(st[0]) + (st[1] === goal ? 1 : 0)));
       const ok = p.style.includes(code) || (hit > 0 && p.style.some(st => st[0] === method));
@@ -1595,4 +1603,5 @@ a { color: inherit; text-decoration: none; }
   render(null);
 })();
 </script>
+<script type="module" src="js/labs.js"></script>
 </body></html>
