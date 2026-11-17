@@ -1,10 +1,10 @@
-/* 색·글꼴은 HaLab 슬라이드 갤러리(blue)와 맞춤 */
+/* 색·글꼴은 HaLab 슬라이드 갤러리 crimson과 맞춤 (경북의대 라운지와 같은 학교색) */
 @font-face { font-family: Pretendard; font-weight: 400; src: url(fonts/Pretendard-Regular.woff2) format("woff2"); }
 @font-face { font-family: Pretendard; font-weight: 500; src: url(fonts/Pretendard-Medium.woff2) format("woff2"); }
 @font-face { font-family: Pretendard; font-weight: 600; src: url(fonts/Pretendard-SemiBold.woff2) format("woff2"); }
 @font-face { font-family: Pretendard; font-weight: 700; src: url(fonts/Pretendard-Bold.woff2) format("woff2"); }
 
-:root { --text: #1f2430; --sub: #5f6673; --line: #e3e6eb; --accent: #2563C9; --tint: #e9f0fb; --photo: #e9ecf0; }
+:root { --text: #1f2430; --sub: #5f6673; --line: #e3e6eb; --accent: #B0283C; --tint: #F7EAEC; --photo: #e9ecf0; }
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }

@@ -105,7 +105,7 @@ PDF 없이 HTML만 만들려면 `python3 build.py --html`이에요.
 | `labfinder.pdf` | 인쇄용 (표지 1쪽 + 기초 11쪽 + 임상 5쪽) |
 | `build.py` | `data/` → `index.html` → `labfinder.pdf` |
 | `quiz.js` | 연구 스타일 테스트 동작 |
-| `style.css` | 연구실 찾기 디자인 (색·글꼴은 이름북과 같아요) |
+| `style.css` | 연구실 찾기 디자인. 강조색은 크림슨 `#B0283C`·옅은 바탕 `#F7EAEC` (경북의대 라운지와 같은 학교색, 맨 위 `:root`에서 바꿔요) |
 | `data/profs.json`, `data/quiz.json` | 교수님 내용, 테스트 질문·유형·주제 |
 | `photos/`, `fonts/` | 사진, Pretendard 글꼴 (SIL OFL, `fonts/LICENSE.txt`) |
 | `apply.html`, `js/apply.js` | 인턴십 안내와 신청서 |
