@@ -244,7 +244,10 @@ async function initLabs({ db, fs, email }) {
     off = new Set(snap.exists() ? snap.data().off || [] : []);
   } catch (err) {
     console.error(err);
-    box.innerHTML = '<p class="msg">교수님 목록을 불러오지 못했어요. 새로 고침해 주세요.</p>';
+    // 규칙에 config/labs가 없으면 새로 고쳐도 안 돼요. 그때는 규칙을 다시 게시하라고 알려요
+    box.innerHTML = err.code === 'permission-denied'
+      ? '<p class="msg">보여 줄 교수님 설정을 읽을 권한이 없어요. Firebase 콘솔 › Firestore › 규칙에 저장소의 최신 <code>firestore.rules</code>를 붙여 넣고 게시해 주세요.</p>'
+      : '<p class="msg">교수님 목록을 불러오지 못했어요. 새로 고침해 주세요.</p>';
     return;
   }
 
