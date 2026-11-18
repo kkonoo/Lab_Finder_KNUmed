@@ -2,9 +2,7 @@
 
 경북대학교 융합형 의사과학자 양성사업단의 학부생 연구 인턴십을 위해 만든 페이지예요. 의과대학 학생이 2분 테스트로 자기 연구 스타일을 알아보고, 기초·임상 교수님 연구실을 둘러본 뒤, 인턴십을 온라인으로 신청해요. 테스트와 교수님 소개는 의과학과 [이름북](https://github.com/kkonoo/Biomed_KNUmed/tree/main/namebook)에서, 신청·관리자 화면은 [N2C 홈페이지](https://github.com/kkonoo/n2c)의 공모·신청에서 가져왔어요.
 
-- 연구실 찾기: https://kkonoo.github.io/Lab_Finder_KNUmed/
-- 인턴십 신청: https://kkonoo.github.io/Lab_Finder_KNUmed/apply.html
-- 관리자: https://kkonoo.github.io/Lab_Finder_KNUmed/admin.html
+- 연구실 찾기: https://lab-finder-med.knu.ac.kr
 
 ## 화면
 
